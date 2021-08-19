@@ -1,7 +1,7 @@
-export { default as Card } from '../../components/Card.vue'
-export { default as ElFilter } from '../../components/ElFilter.vue'
-export { default as Foot } from '../../components/Foot.vue'
-export { default as Nav } from '../../components/Nav.vue'
+export { default as Card } from '../..\\components\\Card.vue'
+export { default as ElFilter } from '../..\\components\\ElFilter.vue'
+export { default as Foot } from '../..\\components\\Foot.vue'
+export { default as Nav } from '../..\\components\\Nav.vue'
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {
