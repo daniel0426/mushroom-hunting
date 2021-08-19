@@ -85,7 +85,14 @@ h1{
   font-size: 2em;
   color: rgb(8, 37, 13);
   padding: 1em 1.3em;
+  
+  background-color: rgba(255, 255, 255, .60);
+  
+  backdrop-filter: blur(5px);
+
 }
+
+
 
 
 
