@@ -1,14 +1,14 @@
 <template>
 
-<div >
+<div class="body" >
     <Nav />
     
-    <form @submit.prevent="handelSubmit">
+    <form @submit.prevent="handelSubmit" action="" >
     
-        <label> Title </label>
-        <input type="text" v-model="title" required>
-        <label> Details</label>
-        <textarea reqired v-model="details"> </textarea>
+        <label for="title"> Title </label>
+        <input type="text" name="title" v-model="title" required>
+        <label for="details"> Details</label>
+        <textarea name="details" reqired v-model="details"> </textarea>
     
         <button>Add project</button>
     </form>
@@ -55,6 +55,11 @@ export default {
 </script>
 
 <style>
+
+.body{
+    height: 100vh;
+    width: 100vw;
+}
 
 form{
     background: white;

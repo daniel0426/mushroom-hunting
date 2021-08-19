@@ -2,6 +2,9 @@
   "Card": {
     "description": "Auto imported from components/Card.vue"
   },
+  "ElFilter": {
+    "description": "Auto imported from components/ElFilter.vue"
+  },
   "Foot": {
     "description": "Auto imported from components/Foot.vue"
   },
