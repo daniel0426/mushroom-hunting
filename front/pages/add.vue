@@ -3,14 +3,18 @@
 <div class="body" >
     <Nav />
     
-    <form @submit.prevent="handelSubmit" action="" >
+    <form class="add-form" @submit.prevent="handleSubmit" action="" >
     
         <label for="title"> Title </label>
         <input type="text" name="title" v-model="title" required>
-        <label for="details"> Details</label>
-        <textarea name="details" reqired v-model="details"> </textarea>
+
+        <label for="image-url"> Image URL: </label>
+        <input type="text" name="image-url" v-model="title" required>
+
+        <label for="description"> Description:</label>
+        <textarea name="description" reqired v-model="details"> </textarea>
     
-        <button>Add project</button>
+        <button>Add mushroom</button>
     </form>
 
     <Foot />
@@ -31,19 +35,19 @@ export default {
 
     methods: {
 
-        handelSubmit(){
-           let project = {
+        handleSubmit(){
+           let mushroom = {
                title: this.title,
                details: this.details,
                complete: false
            }
 
-           console.log(project.title, project.details)
+           console.log(mushroom.title, mushroom.description)
           
            fetch('http://localhost:awitingbackend',{
                method: 'POST',
                headers:{'Content-Type': 'application/json'},
-               body: JSON.stringify(project)
+               body: JSON.stringify(mushroom)
         })
         
       }
@@ -61,10 +65,11 @@ export default {
     width: 100vw;
 }
 
-form{
+.add-form{
     background: white;
     padding: 20px;
     border-radius: 10px;
+    margin-top: 4em;
 
 }
 label{
