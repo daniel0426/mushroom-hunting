@@ -2,15 +2,29 @@
   {
     "name": "About",
     "path": "/About",
-    "component": "/Users/270106452/Desktop/Yoobee- assignments/module3/mushroom-hunting/front/pages/About.vue",
+    "component": "C:\\\\Users\\\\riley\\\\mushroom-hunting\\\\front\\\\pages\\\\About.vue",
     "chunkName": "pages/About",
-    "_name": "_158ef5a9"
+    "_name": "_886697fc"
+  },
+  {
+    "name": "add",
+    "path": "/add",
+    "component": "C:\\\\Users\\\\riley\\\\mushroom-hunting\\\\front\\\\pages\\\\add.vue",
+    "chunkName": "pages/add",
+    "_name": "_869d8b14"
+  },
+  {
+    "name": "contact",
+    "path": "/contact",
+    "component": "C:\\\\Users\\\\riley\\\\mushroom-hunting\\\\front\\\\pages\\\\contact.vue",
+    "chunkName": "pages/contact",
+    "_name": "_cafa3016"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/270106452/Desktop/Yoobee- assignments/module3/mushroom-hunting/front/pages/index.vue",
+    "component": "C:\\\\Users\\\\riley\\\\mushroom-hunting\\\\front\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
-    "_name": "_84569ee4"
+    "_name": "_64126ee7"
   }
 ]
