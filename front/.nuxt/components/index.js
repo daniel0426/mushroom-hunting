@@ -1,4 +1,5 @@
 export { default as Card } from '../../components/Card.vue'
+export { default as ElFilter } from '../../components/ElFilter.vue'
 export { default as Foot } from '../../components/Foot.vue'
 export { default as Nav } from '../../components/Nav.vue'
 

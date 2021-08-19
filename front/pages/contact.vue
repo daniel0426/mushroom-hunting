@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
        <Nav/>
 
        <h1>Contact</h1>
@@ -17,5 +17,10 @@ export default {
 </script>
 
 <style>
+
+.body{
+    height: 100vh;
+    width: 100vw;
+}
 
 </style>
