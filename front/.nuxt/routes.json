@@ -2,15 +2,13 @@
   {
     "name": "About",
     "path": "/About",
-    "component": "/Users/270106452/Desktop/Yoobee- assignments/module3/mushroom-hunting/front/pages/About.vue",
-    "chunkName": "pages/About",
-    "_name": "_158ef5a9"
+    "component": "/Users/mac/Desktop/Yoobee College/mushroom-hunting/mushroom-hunting/front/pages/About.vue",
+    "chunkName": "pages/About"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/270106452/Desktop/Yoobee- assignments/module3/mushroom-hunting/front/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_84569ee4"
+    "component": "/Users/mac/Desktop/Yoobee College/mushroom-hunting/mushroom-hunting/front/pages/index.vue",
+    "chunkName": "pages/index"
   }
 ]
