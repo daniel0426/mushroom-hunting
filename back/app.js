@@ -1,8 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-//model
-const Blog = require("./models/blog");
+
 
 //created a server (express app)
 const app = express();
@@ -20,13 +19,18 @@ app.use(cors())
 const dbURI = 'mongodb+srv://dreamTeam:yoobee@mushroom-hunting.ym12l.mongodb.net/mushroom-hunting?retryWrites=true&w=majority';
 const PORT = 4000;
 
-mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology:true})
-.then((result)=> app.listen(PORT))
+mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology:true, useFindAndModify:true})
+.then((result)=> app.listen(PORT, ()=> {
+    console.log(`listening on port ${PORT}`)
+}))
 .catch((err)=> console.log(err)) 
 
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+
+//model
+const Blog = require("./models/blog");
 
 //get all blogs - Alexis
 // * using "find method"
@@ -49,15 +53,12 @@ app.get('/blogs/:blogId', (req, res, next)=> {
 
 //post new blog - Riley
 // * make a new instance of Blog and using save()
-app.post('/blogs', async (req, res)=> {
-    const blog = new Blog({
-        title : req.body.title,
-        details : req.body.details,
-        tags : req.body.tags
-    });
+app.post('/blogs', async (req, res, next)=> {
+    try {
 
-    const savedBlog = await blog.save();
-    res.json(savedBlog);
+    }catch(err){
+        next(err);
+    }
 })
 
 
