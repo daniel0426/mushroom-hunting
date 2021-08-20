@@ -12,7 +12,7 @@ const blogSchema = new Schema({
         required : true
     },
     tags : {
-        type: Array,
+        type: [],
         required: true
     }
 }, {timestamps : true})
