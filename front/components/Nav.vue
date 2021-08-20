@@ -1,79 +1,58 @@
 <template>
-<div class="head">
+  <div
+    class="flex w-full h-20 justify-between items-center px-6 shadow-b shadow-md"
+  >
+    <div class="flex justify-center items-center space-x-4">
+      <img class="h-16" src="images/mushroom_logo.png" alt="page logo" />
+      <h1 class="font-bold text-fungi-files-dark-green">Fungi Files</h1>
+    </div>
 
-  <div class="brand-box">
-    <img class="logo" src="images/mushroom_logo.png" alt="">
-    <h1>Fungi Files</h1>
+    <div>
+      <button class="focus:outline-none" @click="openMenu()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+
+      <div class="menu-list" v-if="menu">
+        <nuxt-link @click.native="openMenu()" to="/">Home</nuxt-link>
+        <nuxt-link @click.native="openMenu()" to="/about">About</nuxt-link>
+        <nuxt-link @click.native="openMenu()" to="/contact">Contact</nuxt-link>
+        <nuxt-link @click.native="openMenu()" to="/posts/create">Add</nuxt-link>
+      </div>
+    </div>
   </div>
-
-  <div class="menu">
-
-    <div class="menu-button" @click="openMenu()">
-      open menu
-    </div>
-
-
-    <div class="menu-list" v-if="menu">
-      <a href="/">Home</a>
-      <a href="About">About</a>
-      <a href="Contact">Contact</a>
-      <a href="add">Add</a>
-    </div>
-  </div> 
-
-</div>
-
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      menu: false,
+    };
+  },
 
-data(){
-  return{
-    menu:false
-  }
-},
-
-methods:{
-
-openMenu(){
-  this.menu=!this.menu
-}
-
-}
-
-}
+  methods: {
+    openMenu() {
+      this.menu = !this.menu;
+    },
+  },
+};
 </script>
 
 <style>
-
-*{
-  padding: 0;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-h1{
-  font-weight: 600;
-}
-.head {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  background-color: rgb(255, 255, 255);
-  height: 5em;
-  
-  align-items: center;
-  padding: 0.8em 1.5em;
-  filter: drop-shadow(1px 10px 4px #03331536);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-   
-}
-
-.menu-list{
+.menu-list {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -85,36 +64,9 @@ h1{
   font-size: 2em;
   color: rgb(8, 37, 13);
   padding: 1em 1.3em;
-  
-  background-color: rgba(255, 255, 255, .60);
-  
+
+  background-color: rgba(255, 255, 255, 0.6);
+
   backdrop-filter: blur(5px);
-
 }
-
-
-
-
-
-
-
-
-.logo{
-  height:100%;
-  margin-right: 1em;
-}
-
-.brand-box{
-  height:100%;
-  display: flex;
-  align-items: center;
-  justify-content:center;
-  font-weight: 1000;
-  font-size: 1.3em;
-  color: #20431C;
-  
-  
-
-}
-
 </style>

@@ -3,10 +3,7 @@
 
         <h2>Filter by</h2>
       <div class="list">
-        <button> Tag One </button>
-        <button> Tag One </button>
-        <button> Tag One </button>
-        <button> Tag One </button>
+        <button v-for="tag in tags" :key="tag.id">{{ tag.name }}</button>
       </div>
 
     </div>
@@ -15,7 +12,11 @@
 
 <script>
 export default {
+  name: 'TagFilter',
 
+  props: {
+    'tags': Array
+  }
 }
 </script>
 
