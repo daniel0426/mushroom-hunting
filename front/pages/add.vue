@@ -9,6 +9,8 @@
         <input type="text" name="title" v-model="title" required>
         <label for="details"> Details</label>
         <textarea name="details" reqired v-model="details"> </textarea>
+        <label for="tags"> Tags</label>
+        <textarea name="tags" reqired v-model="tags"> </textarea>
     
         <button>Add project</button>
     </form>
@@ -25,7 +27,8 @@ export default {
     data(){
         return{
             title:'',
-            details:''
+            details:'',
+            tags:''
         }
     },
 
@@ -35,12 +38,12 @@ export default {
            let project = {
                title: this.title,
                details: this.details,
-               complete: false
+               tags: this.tags
            }
 
            console.log(project.title, project.details)
           
-           fetch('http://localhost:awitingbackend',{
+           fetch('http://localhost:4000/blogs',{
                method: 'POST',
                headers:{'Content-Type': 'application/json'},
                body: JSON.stringify(project)
@@ -65,6 +68,7 @@ form{
     background: white;
     padding: 20px;
     border-radius: 10px;
+    margin-top: 4em;
 
 }
 label{

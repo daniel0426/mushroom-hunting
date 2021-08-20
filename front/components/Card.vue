@@ -26,7 +26,8 @@ export default {
     background-repeat: no-repeat;
     background-position: center ;
    
-    border: solid 2px black;
+    /* border: solid 2px black; */
+    border-radius:1em;
 }
 
 .card-height{
