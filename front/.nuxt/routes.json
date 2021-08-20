@@ -2,29 +2,25 @@
   {
     "name": "About",
     "path": "/About",
-    "component": "/Users/mac/Desktop/Yoobee College/mushroom-hunting/mushroom-hunting/front/pages/About.vue",
-    "chunkName": "pages/About",
-    "_name": "_368c2558"
+    "component": "C:\\\\Users\\\\riley\\\\mushroom-hunting\\\\front\\\\pages\\\\About.vue",
+    "chunkName": "pages/About"
   },
   {
     "name": "add",
     "path": "/add",
-    "component": "/Users/mac/Desktop/Yoobee College/mushroom-hunting/mushroom-hunting/front/pages/add.vue",
-    "chunkName": "pages/add",
-    "_name": "_93aded68"
+    "component": "C:\\\\Users\\\\riley\\\\mushroom-hunting\\\\front\\\\pages\\\\add.vue",
+    "chunkName": "pages/add"
   },
   {
     "name": "contact",
     "path": "/contact",
-    "component": "/Users/mac/Desktop/Yoobee College/mushroom-hunting/mushroom-hunting/front/pages/contact.vue",
-    "chunkName": "pages/contact",
-    "_name": "_632b5bcb"
+    "component": "C:\\\\Users\\\\riley\\\\mushroom-hunting\\\\front\\\\pages\\\\contact.vue",
+    "chunkName": "pages/contact"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/mac/Desktop/Yoobee College/mushroom-hunting/mushroom-hunting/front/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_425c3f86"
+    "component": "C:\\\\Users\\\\riley\\\\mushroom-hunting\\\\front\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
   }
 ]
