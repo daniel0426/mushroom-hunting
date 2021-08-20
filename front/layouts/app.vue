@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="min-h-screen flex flex-col">
     <Nav />
 
-    <nuxt />
+    <div class="flex flex-grow overflow-y-auto py-10">
+      <nuxt class="md:max-w-7xl mx-auto" />
+    </div>
 
     <Foot />
   </div>
