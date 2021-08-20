@@ -18,7 +18,7 @@ app.use(cors())
 
 //connect to DB
 const dbURI = 'mongodb+srv://dreamTeam:yoobee@mushroom-hunting.ym12l.mongodb.net/mushroom-hunting?retryWrites=true&w=majority';
-const PORT = 3000;
+const PORT = 4000;
 
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology:true})
 .then((result)=> app.listen(PORT))
