@@ -1,7 +1,5 @@
 <template>
-  <div class="body">
-    <Nav />
-
+  <div>
     <form class="add-form" @submit.prevent="handleSubmit" action="">
       <label for="title"> Title </label>
       <input type="text" name="title" v-model="title" required />
@@ -14,13 +12,13 @@
 
       <button>Add mushroom</button>
     </form>
-
-    <Foot />
   </div>
 </template>
 
 <script>
 export default {
+  layout: "app",
+
   data() {
     return {
       title: "",
@@ -49,11 +47,6 @@ export default {
 </script>
 
 <style>
-.body {
-  height: 100vh;
-  width: 100vw;
-}
-
 .add-form {
   background: white;
   padding: 20px;
