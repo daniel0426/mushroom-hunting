@@ -39,6 +39,7 @@ app.get('/blogs', (req, res, next)=> {
 
     }catch(err){
         next(err)
+        
     }
 })
 
@@ -58,6 +59,8 @@ app.post('/blogs', async (req, res, next)=> {
 
     }catch(err){
         next(err);
+        
+        
     }
 })
 

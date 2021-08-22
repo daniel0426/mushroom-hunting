@@ -1,10 +1,10 @@
 <template>
   <div>
     <form class="add-form" @submit.prevent="handleSubmit" action="">
-      <label for="title"> Title </label>
+      <label for="title"> Title:</label>
       <input type="text" name="title" v-model="title" required />
 
-      <label for="author"> Author </label>
+      <label for="author"> Author:</label>
       <input type="text" name="author" v-model="author" required />
 
       <label for="image-url"> Image URL: </label>
@@ -26,6 +26,8 @@ export default {
     return {
       title: "",
       details: "",
+      url: "",
+      author: ""
     };
   },
 
@@ -36,10 +38,10 @@ export default {
         details: this.details,
         url: this.url,
         author: this.author,
-        complete: false,
+        
       };
 
-      console.log(mushroom.title, mushroom.description);
+      console.log(mushroom);
 
       fetch("http://localhost:4000", {
         method: "POST",
