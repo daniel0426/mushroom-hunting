@@ -18,6 +18,8 @@
   </div>
 </template>
 
+
+
 <script>
 export default {
   layout: "app",
@@ -32,6 +34,7 @@ export default {
   },
 
   methods: {
+    
     handleSubmit() {
       let mushroom = {
         title: this.title,
@@ -43,14 +46,18 @@ export default {
 
       console.log(mushroom);
 
-      fetch("http://localhost:4000", {
+      fetch("http://localhost:4000/blogs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(mushroom),
       });
+
+        this.$emit('addedPost')
     },
+
   },
 };
+
 </script>
 
 <style>
