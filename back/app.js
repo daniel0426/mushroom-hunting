@@ -23,7 +23,7 @@ mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology:true, useFind
 .then((result)=> app.listen(PORT, ()=> {
     console.log(`listening on port ${PORT}`)
 }))
-.catch((err)=> console.log(err)) 
+.catch((err)=> console.log(err))
 
 
 app.use(express.urlencoded({extended:true}));
@@ -42,7 +42,7 @@ app.get('/blogs', (req, res, next)=> {
     }
 })
 
-//get specific blog 
+//get specific blog
 app.get('/blogs/:blogId', (req, res, next)=> {
     try{
 
@@ -66,6 +66,10 @@ app.post('/blogs', async (req, res, next)=> {
 //* using findByIdAndDelete method
 app.delete('/blogs/:blogId/', (req, res, next)=> {
     try{
+        Blog.findByIdAndDelete(req.params.blogId, function (err){
+           if (err) next(err);
+           else res.status(200)
+        })
 
     }catch(err){
         next(err)
