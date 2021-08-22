@@ -4,8 +4,11 @@
       <label for="title"> Title </label>
       <input type="text" name="title" v-model="title" required />
 
+      <label for="author"> Author </label>
+      <input type="text" name="author" v-model="author" required />
+
       <label for="image-url"> Image URL: </label>
-      <input type="text" name="image-url" v-model="title" required />
+      <input type="text" name="image-url" v-model="url" required />
 
       <label for="description"> Description:</label>
       <textarea name="description" reqired v-model="details"> </textarea>
@@ -31,12 +34,14 @@ export default {
       let mushroom = {
         title: this.title,
         details: this.details,
+        url: this.url,
+        author: this.author,
         complete: false,
       };
 
       console.log(mushroom.title, mushroom.description);
 
-      fetch("http://localhost:awitingbackend", {
+      fetch("http://localhost:4000", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(mushroom),
