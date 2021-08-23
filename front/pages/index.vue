@@ -67,9 +67,6 @@ export default {
       blogs: []
     };
   },
-
-  methods: {
-  },
 };
 </script>
 
