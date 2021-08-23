@@ -21,11 +21,11 @@
 
     <TagFilter :tags="tags" />
 
-    <div  @addedPost="reLoadBlogs" class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl border border-blue-500">
-      <Card
-        v-for="(mushroom, mushroomIndex) in mushrooms"
-        :key="mushroomIndex"
-        :mushroom="mushroom"
+    <div @addedPost="reLoadBlogs" class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl">
+      <Blog class="my-10 border border-indigo-500"
+        v-for="blog in blogs"
+        :key="blog._id"
+        :blog="blog"
       />
     </div>
   </div>
@@ -39,72 +39,43 @@ export default {
 
   computed: {
     tags() {
-      return this.mushrooms
-        .map((mushroom) => mushroom.tags)
+      return this.blogs
+        .map((blog) => blog.tags)
         .reduce((a, b) => a.concat(b), []);
     }
   },
 
+  async fetch() {
+    await this.getBlogs();
+  },
+
   methods:{
+    async getBlogs() {
+      this.blogs = [];
+      const response = await fetch("http://localhost:4000/blogs");
+      this.blogs = await response.json();
+      console.log(this.blogs)
+    },
     
     reLoadBlogs(){
       // awaiting fetch request
     }
-
   },
 
   data() {
     return {
-      mushrooms: [
-        {
-          id: 1,
-          title: "muush one",
-          url: "https://drive.google.com/uc?export=view&id=1KhIDTZAMQQcA_Xpf5ah5Hc5dSJ9eZ3OC",
-          tags: [
-            {
-              id: 1,
-              name: "test tag",
-            },
-            {
-              id: 3,
-              name: "test tag",
-            },
-            {
-              id: 10,
-              name: "test tag",
-            },
-          ],
-        },
-        {
-          id: 2,
-          title: "muush one",
-          url: "https://drive.google.com/uc?export=view&id=14gKQsnIkPQUl5J5wryaWXylB323Xalrc",
-          tags: [
-            {
-              id: 2,
-              name: "test tag",
-            },
-            {
-              id: 4,
-              name: "test tag",
-            },
-            {
-              id: 8,
-              name: "test tag",
-            },
-          ],
-        },
-      ],
+      blogs: []
     };
   },
 
+  methods: {
+  },
 };
 </script>
 
 <style >
 .mushroom-list {
   width: 100%;
-  /* height: 90vh; */
   background-color: rgba(255, 255, 255, 0.691);
 
   display: flex;
