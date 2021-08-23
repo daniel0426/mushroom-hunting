@@ -33,7 +33,7 @@ export default {
  methods: {
     
     handleSubmit() {
-      let mushroom = {
+      let blog = {
         title: this.title,
         details: this.details,
         url: this.url,
@@ -41,12 +41,12 @@ export default {
         
       };
 
-      console.log(mushroom);
+      console.log(blog);
 
       fetch("http://localhost:4000/blogs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(mushroom),
+        body: JSON.stringify(blog),
       });
 
         this.$emit('addedPost')
