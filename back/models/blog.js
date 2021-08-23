@@ -20,7 +20,7 @@ const blogSchema = mongoose.Schema({
     },
     tags : {
         type: [],
-        required: true
+        default: "Mushroom"
     }
 }, {timestamps : true})
 
