@@ -3,13 +3,16 @@
     <h3>{{blog.title}}</h3>
     <img class="object-cover w-full h-full" :src="blog.imgURL" alt="post image" />
     <div class="absolute">
-      <div class="blog-summ flex flew-row">
-        <ul>
-          <li v-for="tag in blog.tags" :key="tag.id">{{ tag.name }}</li>
+      <div class="blog-summ flex flew-row justify-between border border-indigo-500">
+        <ul class="mr-30">
+          <li v-for="tag in blog.tags" :key="tag.id"> 
+            <h3>{{tag}}</h3>
+          </li>
         </ul>
+        <button >See Detail</button>
       </div>
 
-      <button >See Detail</button>
+      
     </div>
 
   </div>
