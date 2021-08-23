@@ -31,26 +31,29 @@ app.use(express.json());
 
 //model
 const Blog = require("./models/blog");
+const { response } = require('express');
 
 //get all blogs - Alexis
 // * using "find method"
-app.get('/blogs', (req, res, next)=> {
+app.get('/blogs', async (req, res, next)=> {
     try{
-
+        const blogs = await Blog.find()
+        res.status(200).json(blogs)
     }catch(err){
         next(err)
-        
+
     }
-})
+});
 
 //get specific blog
-app.get('/blogs/:blogId', (req, res, next)=> {
+app.get('/blogs/:blogId', async (req, res, next)=> {
     try{
-
+        const blog = await Blog.findById(req.params.blogId)
+        res.status(200).json(blog)
     }catch(err){
         next(err);
     }
-})
+});
 
 //post new blog - Riley
 // * make a new instance of Blog and using save()
@@ -71,10 +74,10 @@ app.post('/blogs', async (req, res, next)=> {
 
     }catch(err){
         next(err);
-        
-        
+
+
     }
-})
+});
 
 
 //delete the blog - Annabel
@@ -99,4 +102,4 @@ app.patch('/blogs/:blogId/', (req, res, next)=> {
     } catch (err) {
         next(err)
     }
-})
+});
