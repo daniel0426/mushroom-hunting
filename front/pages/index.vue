@@ -22,7 +22,7 @@
     <TagFilter :tags="tags" />
 
     <div class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl border border-blue-500">
-      <Card
+      <Blog
         v-for="(mushroom, mushroomIndex) in mushrooms"
         :key="mushroomIndex"
         :mushroom="mushroom"
