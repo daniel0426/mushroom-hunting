@@ -1,11 +1,14 @@
 <template>
   <div>
     <form class="add-form" @submit.prevent="handleSubmit" action="">
-      <label for="title"> Title </label>
+      <label for="title"> Title:</label>
       <input type="text" name="title" v-model="title" required />
 
+      <label for="author"> Author:</label>
+      <input type="text" name="author" v-model="author" required />
+
       <label for="image-url"> Image URL: </label>
-      <input type="text" name="image-url" v-model="title" required />
+      <input type="text" name="image-url" v-model="url" required />
 
       <label for="description"> Description:</label>
       <textarea name="description" reqired v-model="details"> </textarea>
@@ -15,6 +18,8 @@
   </div>
 </template>
 
+
+
 <script>
 export default {
   layout: "app",
@@ -23,27 +28,36 @@ export default {
     return {
       title: "",
       details: "",
+      url: "",
+      author: ""
     };
   },
 
   methods: {
+    
     handleSubmit() {
-      let mushroom = {
+      let blog = {
         title: this.title,
         details: this.details,
-        complete: false,
+        url: this.url,
+        author: this.author,
+        
       };
 
-      console.log(mushroom.title, mushroom.description);
+      console.log(blog);
 
-      fetch("http://localhost:awitingbackend", {
+      fetch("http://localhost:4000/blogs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(mushroom),
+        body: JSON.stringify(blog),
       });
+
+        this.$emit('addedPost')
     },
+
   },
 };
+
 </script>
 
 <style>

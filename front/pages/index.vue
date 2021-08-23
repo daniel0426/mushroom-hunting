@@ -21,7 +21,7 @@
 
     <TagFilter :tags="tags" />
 
-    <div class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl border border-blue-500">
+    <div  @addedPost="reLoadBlogs" class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl border border-blue-500">
       <Card
         v-for="(mushroom, mushroomIndex) in mushrooms"
         :key="mushroomIndex"
@@ -43,6 +43,14 @@ export default {
         .map((mushroom) => mushroom.tags)
         .reduce((a, b) => a.concat(b), []);
     }
+  },
+
+  methods:{
+    
+    reLoadBlogs(){
+      // awaiting fetch request
+    }
+
   },
 
   data() {
@@ -89,6 +97,7 @@ export default {
       ],
     };
   },
+
 };
 </script>
 
