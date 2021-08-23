@@ -18,8 +18,6 @@
   </div>
 </template>
 
-
-
 <script>
 export default {
   layout: "app",
@@ -32,8 +30,7 @@ export default {
       author: ""
     };
   },
-
-  methods: {
+ methods: {
     
     handleSubmit() {
       let mushroom = {

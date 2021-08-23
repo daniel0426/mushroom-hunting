@@ -5,9 +5,13 @@
     <img class="object-cover w-full h-full" :src="mushroom.url" alt="post image" />
     <div class="absolute">
       <div class="tag-list">
+
+        
         <ul>
           <li v-for="tag in mushroom.tags" :key="tag.id">{{ tag.name }}</li>
         </ul>
+
+
       </div>
       <a href="">See Detail</a>
     </div>

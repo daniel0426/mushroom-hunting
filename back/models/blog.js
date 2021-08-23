@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 const blogSchema = mongoose.Schema({
-    imgURL : {
+    imgURL: {
         type:String, 
         required: true
     },
