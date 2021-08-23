@@ -7,7 +7,7 @@
       <h1 class="font-bold text-fungi-files-dark-green">Fungi Files</h1>
     </div>
 
-    <div>
+    <div v-click-outside="hide">
       <button class="focus:outline-none" @click="openMenu()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -36,6 +36,9 @@
 </template>
 
 <script>
+
+import ClickOutside from 'vue-click-outside'
+
 export default {
   data() {
     return {
@@ -47,7 +50,15 @@ export default {
     openMenu() {
       this.menu = !this.menu;
     },
+    hide () {
+      this.menu = false
+    }
   },
+
+  directives: {
+    ClickOutside
+  }
+  
 };
 </script>
 

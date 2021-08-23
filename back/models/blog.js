@@ -2,11 +2,15 @@ const mongoose = require('mongoose');
 
 
 const blogSchema = mongoose.Schema({
-    imgURL : {
+    imgURL: {
         type:String, 
         required: true
     },
     title :{
+        type : String, 
+        required : true
+    },
+    author :{
         type : String, 
         required : true
     },
@@ -16,7 +20,7 @@ const blogSchema = mongoose.Schema({
     },
     tags : {
         type: [],
-        required: true
+        default: "Mushroom"
     }
 }, {timestamps : true})
 
