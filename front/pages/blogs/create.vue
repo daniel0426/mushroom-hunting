@@ -40,9 +40,6 @@ export default {
         author: this.author,
         
       };
-
-      console.log(blog);
-
       fetch("http://localhost:4000/blogs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

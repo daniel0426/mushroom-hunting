@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'Home',
   layout: "app",
 
   data(){
