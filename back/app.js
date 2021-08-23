@@ -41,6 +41,7 @@ app.get('/blogs', async (req, res, next)=> {
         res.status(200).json(blogs)
     }catch(err){
         next(err)
+        
     }
 });
 
@@ -58,9 +59,23 @@ app.get('/blogs/:blogId', (req, res, next)=> {
 // * make a new instance of Blog and using save()
 app.post('/blogs', async (req, res, next)=> {
     try {
+    res.send('Post Recived')
+    console.log(req.body)
+    const blog = new Blog({
+        title: req.body.title,
+        details: req.body.details,
+        imgURL: req.body.url,
+        author: req.body.author,
+        tags: req.body.title
+    })
+
+    const savedBlog = await blog.save()
+    res.status(200).send(`blog saved = `, savedBlog)
 
     }catch(err){
         next(err);
+        
+        
     }
 });
 

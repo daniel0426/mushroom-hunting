@@ -21,7 +21,7 @@
 
     <TagFilter :tags="tags" />
 
-    <div class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl">
+    <div @addedPost="reLoadBlogs" class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl">
       <Blog class="my-10 border border-indigo-500"
         v-for="blog in blogs"
         :key="blog._id"
@@ -45,23 +45,30 @@ export default {
     }
   },
 
-  data() {
-    return {
-      blogs: []
-    };
-  },
-
   async fetch() {
     await this.getBlogs();
   },
 
-  methods: {
+  methods:{
     async getBlogs() {
       this.blogs = [];
       const response = await fetch("http://localhost:4000/blogs");
       this.blogs = await response.json();
       console.log(this.blogs)
     },
+    
+    reLoadBlogs(){
+      // awaiting fetch request
+    }
+  },
+
+  data() {
+    return {
+      blogs: []
+    };
+  },
+
+  methods: {
   },
 };
 </script>
