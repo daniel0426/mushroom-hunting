@@ -21,8 +21,8 @@
 
     <TagFilter :tags="tags" />
 
-    <div @addedPost="reLoadBlogs" class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl">
-      <Blog class="my-10 border border-indigo-500"
+    <div @addedPost="reLoadBlogs" class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto">
+      <Blog class="my-10"
         v-for="blog in blogs"
         :key="blog._id"
         :blog="blog"
