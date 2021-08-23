@@ -46,10 +46,10 @@ app.get('/blogs', async (req, res, next)=> {
 });
 
 //get specific blog 
-app.get('/blogs/:blogId', (req, res, next)=> {
+app.get('/blogs/:blogId', async (req, res, next)=> {
     try{
-        // const blog = await Blog.findById(req.blogID)
-        // res.status(200).json(blog)
+        const blog = await Blog.findById(req.params.blogId)
+        res.status(200).json(blog)
     }catch(err){
         next(err);
     }
