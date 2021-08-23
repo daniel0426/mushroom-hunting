@@ -11,7 +11,7 @@
       <input type="text" name="image-url" v-model="url" required />
 
       <label for="description"> Description:</label>
-      <textarea name="description" reqired v-model="details"> </textarea>
+      <textarea name="description" reqired v-model="details" required> </textarea>
 
       <button>Add mushroom</button>
     </form>

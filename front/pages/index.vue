@@ -34,9 +34,16 @@
 <script>
 export default {
   name: 'IndexPage',
-
   layout: "app",
 
+  data(){
+    return {
+      blogs: []
+    }
+  },
+  mounted(){
+    this.getBlogs()
+  },
   computed: {
     tags() {
       return this.blogs
@@ -45,29 +52,16 @@ export default {
     }
   },
 
-  async fetch() {
-    await this.getBlogs();
-  },
-
   methods:{
-    async getBlogs() {
-      this.blogs = [];
+     async getBlogs() {
       const response = await fetch("http://localhost:4000/blogs");
-      this.blogs = await response.json();
-      console.log(this.blogs)
-    },
-    
-    reLoadBlogs(){
-      // awaiting fetch request
-    }
-  },
+      const data = await response.json();
+      this.blogs = data;
+      },
 
-  data() {
-    return {
-      blogs: []
-    };
-  },
-};
+  
+  }
+}
 </script>
 
 <style >

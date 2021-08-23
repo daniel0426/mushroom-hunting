@@ -1,6 +1,7 @@
 <template>
   <div class="rounded-md ">
     <h3>{{ blog.title }}</h3>
+    <p>By {{blog.author}} on {{new Date(blog.createdAt).toLocaleString("en-NZ")}}</p>
     <img
       class="object-cover w-full h-full"
       :src="blog.imgURL"
@@ -15,7 +16,7 @@
 
       <nuxt-link
         :to="{
-          name: 'posts-id',
+          name: 'blogs-id',
           params: {
             id: blog._id,
           },
