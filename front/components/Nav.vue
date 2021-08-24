@@ -29,7 +29,7 @@
         <nuxt-link @click.native="openMenu()" to="/">Home</nuxt-link>
         <nuxt-link @click.native="openMenu()" to="/about">About</nuxt-link>
         <nuxt-link @click.native="openMenu()" to="/contact">Contact</nuxt-link>
-        <nuxt-link @click.native="openMenu()" to="/posts/create">Add</nuxt-link>
+        <nuxt-link @click.native="openMenu()" to="/blogs/create">Add</nuxt-link>
       </div>
     </div>
   </div>
