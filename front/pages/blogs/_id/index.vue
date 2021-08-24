@@ -17,7 +17,7 @@
         <div class="flex">
           <nuxt-link
             :to="{ name: 'blogs-id-update', params: { id: blog._id } }"
-            :blog="blog"
+            
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -35,8 +35,9 @@
             </svg>
           </nuxt-link>
           <svg
+            @click = "confirmDelete"
             xmlns="http://www.w3.org/2000/svg"
-            class="h-9 w-10 text-fungi-files-light-green cursor-pointer"
+            class="h-9 w-10  text-red-600 cursor-pointer"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -56,19 +57,37 @@
 
 <script>
 export default {
-  name: "blogs-id",
-
-  layout: "app",
-
-  async asyncData({ params }) {
-    const response = await fetch(`http://localhost:4000/blogs/${params.id}`);
-    const blog = await response.json();
-    return { blog };
+  
+  data(){
+    return {
+    }
   },
-  // methods: {
-  //   //Annabel's code
-  //   handleDelete() {},
-  // },
+  name: "blogs-id",
+  layout: "app",
+  
+  async asyncData({ params }) {
+
+    const response = await fetch(`http://localhost:4000/blogs/${params.id}`,
+    );
+    const blog = await response.json();
+    return {blog};
+  },
+  
+  methods: {
+    confirmDelete() {
+      let answerToDelete = confirm("Are you sure you want to delete?");
+      if(answerToDelete){
+        this.handleDelete()
+      } 
+
+    },
+    async handleDelete(){
+      
+    
+      
+    }
+
+  },
 };
 </script>
 

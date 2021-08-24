@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-md ">
+  <div class="rounded-md m-12">
     <h3>{{ blog.title }}</h3>
     <!-- <p>By {{blog.author}} on {{new Date(blog.createdAt).toLocaleString("en-NZ")}}</p> -->
     <img
@@ -11,14 +11,18 @@
         <SingleTag v-for="(tag, index) in blog.tags" :key="index" :tag="tag" />
 
       <nuxt-link
+      
         :to="{
           name: 'blogs-id',
           params: {
             id: blog._id,
           },
         }"
+        
       >
-        Detail View
+        <button class="px-3 py-1 bg-gray-400 text-white rounded-lg m-2 text-md cursor-pointer">
+          Detail View
+          </button>
       </nuxt-link>
     </div>
   </div>

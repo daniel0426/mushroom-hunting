@@ -21,7 +21,7 @@
 
     <TagFilter :tags="tags" />
 
-    <div v-if="blogs" class="grid gap-2 md:gap-6 grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto">
+    <div v-if="blogs" class="grid gap-2 m-12 md:gap-6 grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto">
       <Blog class="my-10"
         v-for="blog in blogs"
         :key="blog._id"

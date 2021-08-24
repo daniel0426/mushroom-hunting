@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h1 class="text-center text-2xl uppercase ">Create Blog</h1>
+
     <form class="add-form" @submit.prevent="handleSubmit" action="">
       <label for="title"> Title:</label>
       <input type="text" name="title" v-model="title" required />
@@ -62,7 +64,7 @@ export default {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  margin-top: 4em;
+  margin-top: 2em;
 }
 label {
   display: block;

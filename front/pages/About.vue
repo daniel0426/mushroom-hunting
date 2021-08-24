@@ -1,11 +1,14 @@
 <template>
   <div>
-    <h1 class="text-center text-2xl mb-12">About</h1>
+    <h1 class="text-center text-2xl mb-12 uppercase">About</h1>
     <p class="w-4/6 m-auto mb-12">
-      Welcome to the Mushroom Hungting Blog!
+      Welcome to the Mushroom Hungting Blog !
+      <br>
       <br>
       This blog keeps you up-to-date with all the exciting additions to thie website.
+      <br>
       You can upload your beautiful mushrooms and can share with various people who are passionate about mushroom.
+      <br>
       Show your Passion!
     </p>
     <div class="imageContainer w-4/6  border-black m-auto grid grid-cols-1 gap-6 md:grid-cols-2">

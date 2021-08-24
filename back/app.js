@@ -70,26 +70,20 @@ app.post('/blogs', async (req, res, next)=> {
     })
 
     const savedBlog = await blog.save()
-    res.status(200).send(`blog saved = `, savedBlog)
-    
-   
+    res.status(200).send(savedBlog)
+
     }catch(err){
         next(err);
-
-
     }
 });
 
 
 //delete the blog - Annabel
 //* using findByIdAndDelete method
-app.delete('/blogs/:blogId/', (req, res, next)=> {
+app.delete('/blogs/:blogId/', async (req, res, next)=> {
     try{
-        Blog.findByIdAndDelete(req.params.blogId, function (err){
-           if (err) next(err);
-           else res.status(200)
-        })
-
+        const deletedBlog = await Blog.findByIdAndDelete(req.params.blogId);
+        res.status(200).json(deletedBlog);     
     }catch(err){
         next(err)
     }
