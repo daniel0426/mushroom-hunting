@@ -14,6 +14,14 @@
 
       <label for="description"> Description:</label>
       <textarea name="description" reqired v-model="details" required> </textarea>
+      
+      <label> Tags:</label>
+
+    <input type="text" v-model="tempTag" @keyup.alt="addTag"> 
+
+    <div  v-for="tag in tags"  :key="tag" class="pill">
+        <p @click="deleteTag(tag)" >{{tag}}</p>
+    </div>
 
       <button>Add mushroom</button>
     </form>
@@ -30,10 +38,35 @@ export default {
       title: "",
       details: "",
       url: "",
-      author: ""
+      author: "",
+      tempTag: "",
+      tags:[]
     };
   },
+ 
+ 
  methods: {
+
+
+   addTag(e){
+
+     if(e.key==="," && this.tempTag){
+       
+       if(!this.tags.includes(this.tempTag)){
+         this.tags.push(this.tempTag)
+       }
+        this.tempTag=""
+      }
+     },
+
+   deleteTag(tag){
+     this.tags=this.tags.filter((item) =>{
+       return tag !== item;
+     })
+   },
+
+
+
     
     handleSubmit() {
       let blog = {
@@ -41,6 +74,7 @@ export default {
         details: this.details,
         url: this.url,
         author: this.author,
+        tags: this.tags
         
       };
       fetch("http://localhost:4000/blogs", {
@@ -60,6 +94,18 @@ export default {
 </script>
 
 <style>
+.pill{
+    display: inline-block;
+    margin: 20px 10px 0 0;
+    padding: 6px 12px;
+    background: rgb(132, 204, 114);
+    border-radius: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
 .add-form {
   background: white;
   padding: 20px;
