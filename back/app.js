@@ -71,7 +71,8 @@ app.post('/blogs', async (req, res, next)=> {
 
     const savedBlog = await blog.save()
     res.status(200).send(`blog saved = `, savedBlog)
-
+    console.log(req.path)
+   
     }catch(err){
         next(err);
 

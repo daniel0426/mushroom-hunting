@@ -21,7 +21,7 @@
 
     <TagFilter :tags="tags" />
 
-    <div @addedPost="reLoadBlogs" class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto">
+    <div class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto">
       <Blog class="my-10"
         v-for="blog in blogs"
         :key="blog._id"
@@ -33,9 +33,18 @@
 
 <script>
 export default {
-  name: 'IndexPage',
-
+  name: 'Home',
   layout: "app",
+
+  data(){
+    return {
+      blogs: []
+    }
+  },
+
+  async fetch (){
+    await this.getBlogs()
+  },
 
   computed: {
     tags() {
@@ -45,29 +54,14 @@ export default {
     }
   },
 
-  async fetch() {
-    await this.getBlogs();
-  },
-
   methods:{
-    async getBlogs() {
-      this.blogs = [];
+     async getBlogs() {
       const response = await fetch("http://localhost:4000/blogs");
-      this.blogs = await response.json();
-      console.log(this.blogs)
+      const data = await response.json();
+      this.blogs = data;
     },
-    
-    reLoadBlogs(){
-      // awaiting fetch request
-    }
-  },
-
-  data() {
-    return {
-      blogs: []
-    };
-  },
-};
+  }
+}
 </script>
 
 <style >
