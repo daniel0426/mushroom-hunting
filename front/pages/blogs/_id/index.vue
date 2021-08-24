@@ -10,7 +10,7 @@
 
     <h3>Tags</h3>
     <div class="flex justify-end">
-      <nuxt-link  :to="{name : 'blogs-id-update', params : {id: blog._id}}" :blog="blog"  >
+      <nuxt-link  :to="{name : 'blogs-id-update', params : {id: blog._id}}" >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-10 w-10 text-blue-500 cursor-pointer "

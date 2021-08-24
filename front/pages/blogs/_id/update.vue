@@ -1,17 +1,20 @@
 <template>
 <div>
     <div>this is the id edit page</div>
-    <p>{{blog}}</p>
+    <p>{{blog.title}}</p>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['blog'],
+ props: {
+    blog: Object,
+  },
     name : "blogs-id-update",
-  layout: "app",
-
+    layout: "app",
+  
 }
+
 </script>
 
 <style>
