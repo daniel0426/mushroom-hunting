@@ -1,54 +1,34 @@
 <template>
-    <div class="filter">
-
-        <h2>Filter by</h2>
-      <div class="list">
-        <button v-for="tag in tags" :key="tag.id">{{ tag.name }}</button>
-      </div>
-
+  <div class="">
+    <h2 class="">Filter by:</h2>
+    <div class="flex flex-wrap">
+      <button
+        class="
+          p-3
+          bg-fungi-files-light-green
+          text-fungi-files-dark-green
+          rounded-lg
+          m-2
+          text-xs
+        "
+        v-for="(tag, index) in tags"
+        :key="index"
+      >
+        {{ tag }}
+      </button>
     </div>
-  
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'TagFilter',
+  name: "TagFilter",
 
   props: {
-    'tags': Array
-  }
-}
+    tags: Array,
+  },
+};
 </script>
 
 <style>
-
-
-.filter{
-  display: flex;
-  justify-content:space-between;
-  width: 100%;
-  width: 100%;
-
-}
-
-
-.filter button{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.5em;
-  width: 5em;
-  background-color: #ADD4A4;
-  color: #20431C;
-  border-radius: 1em;
-  
-}
-
-.list{
-  display: flex;
-}
-
-.list button{
-  margin-left: 1em;
-}
 </style>
