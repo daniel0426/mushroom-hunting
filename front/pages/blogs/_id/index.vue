@@ -11,6 +11,7 @@
     <h3>Tags</h3>
     <div class="flex justify-end">
     <svg
+      @click="handleUpdate"
       xmlns="http://www.w3.org/2000/svg"
       class="h-10 w-10 text-blue-500 cursor-pointer "
       fill="none"
@@ -26,6 +27,7 @@
     </svg>
 
     <svg
+    @click = "handleDelete"
       xmlns="http://www.w3.org/2000/svg"
       class="h-9 w-10 text-red-700 cursor-pointer"
       fill="none"
@@ -59,6 +61,17 @@ export default {
     const response = await fetch(`http://localhost:4000/blogs/${params.id}`);
     const blog = await response.json();
     return { blog }
+  },
+  //daniels
+  methods : {
+    handleUpdate (){
+
+    },
+
+  //Annabel's code 
+    handleDelete(){
+
+    }
   }
 };
 </script>
