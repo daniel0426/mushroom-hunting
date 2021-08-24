@@ -2,20 +2,11 @@
   <div class="">
     <h2 class="">Filter by:</h2>
     <div class="flex flex-wrap">
-      <button
-        class="
-          p-3
-          bg-fungi-files-light-green
-          text-fungi-files-dark-green
-          rounded-lg
-          m-2
-          text-xs
-        "
+      <SingleTag
         v-for="(tag, index) in tags"
         :key="index"
-      >
-        {{ tag }}
-      </button>
+        :tag="tag"
+      />
     </div>
   </div>
 </template>
