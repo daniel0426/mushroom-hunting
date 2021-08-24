@@ -17,7 +17,7 @@
       
       <label> Tags:</label>
 
-    <input type="text" v-model="tempTag" @keyup.alt="addTag"> 
+    <input type="text" v-model="tempTag" @keyup.space="addTag"> 
 
     <div  v-for="tag in tags"  :key="tag" class="pill">
         <p @click="deleteTag(tag)" >{{tag}}</p>
@@ -48,9 +48,9 @@ export default {
  methods: {
 
 
-   addTag(e){
+   addTag(){
 
-     if(e.key==="," && this.tempTag){
+     if( this.tempTag){
        
        if(!this.tags.includes(this.tempTag)){
          this.tags.push(this.tempTag)
