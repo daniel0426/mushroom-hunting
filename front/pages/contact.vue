@@ -35,7 +35,6 @@ export default {
 
 <style>
 .name-inputs {
-  flex: 
 }
 
 </style>
