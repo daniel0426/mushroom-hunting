@@ -10,8 +10,8 @@
 
     <h3>Tags</h3>
     <div class="flex justify-end">
+      <NuxtLink  :to="{name : 'blog-update', params : {id: blog._id}}">
     <svg
-      @click="handleUpdate"
       xmlns="http://www.w3.org/2000/svg"
       class="h-10 w-10 text-blue-500 cursor-pointer "
       fill="none"
@@ -25,7 +25,7 @@
         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
       />
     </svg>
-
+    </NuxtLink>
     <svg
     @click = "handleDelete"
       xmlns="http://www.w3.org/2000/svg"
@@ -62,12 +62,7 @@ export default {
     const blog = await response.json();
     return { blog }
   },
-  //daniels
   methods : {
-    handleUpdate (){
-
-    },
-
   //Annabel's code 
     handleDelete(){
 

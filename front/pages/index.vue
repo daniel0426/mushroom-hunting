@@ -21,12 +21,15 @@
 
     <TagFilter :tags="tags" />
 
-    <div class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto">
+    <div v-if="blogs" class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto">
       <Blog class="my-10"
         v-for="blog in blogs"
         :key="blog._id"
         :blog="blog"
       />
+    </div>
+    <div v-else>
+      <h2 >Loading mushrooms...</h2>
     </div>
   </div>
 </template>

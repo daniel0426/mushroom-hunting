@@ -37,7 +37,7 @@ const { response } = require('express');
 // * using "find method"
 app.get('/blogs', async (req, res, next)=> {
     try{
-        const blogs = await Blog.find()
+        const blogs = await Blog.find().sort({createdAt : -1})
         res.status(200).json(blogs)
     }catch(err){
         next(err)
@@ -71,7 +71,7 @@ app.post('/blogs', async (req, res, next)=> {
 
     const savedBlog = await blog.save()
     res.status(200).send(`blog saved = `, savedBlog)
-    console.log(req.path)
+    
    
     }catch(err){
         next(err);
@@ -95,7 +95,7 @@ app.delete('/blogs/:blogId/', (req, res, next)=> {
 //* using findByIdAndUpdate method
 app.patch('/blogs/:blogId/', (req, res, next)=> {
     try {
-
+        
     } catch (err) {
         next(err)
     }

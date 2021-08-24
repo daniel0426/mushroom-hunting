@@ -45,6 +45,8 @@ export default {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(blog),
+      }).then(()=> {
+        this.$router.push('/')
       });
 
         this.$emit('addedPost')
