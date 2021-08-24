@@ -4,7 +4,7 @@
   >
     <div class="flex justify-center items-center space-x-4">
       <img class="h-16" src="@/static/images/mushroom_logo.png" alt="page logo" />
-      <h1 class="font-bold text-fungi-files-dark-green">Fungi Files</h1>
+      <h1 class="text-xl font-semibold text-fungi-files-dark-green">Fungi Files</h1>
     </div>
 
     <div v-click-outside="hide">

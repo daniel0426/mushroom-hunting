@@ -1,12 +1,13 @@
 <template>
   <button
     class="
-      p-3
+      px-3
+      py-1
       bg-fungi-files-light-green
       text-fungi-files-dark-green
       rounded-lg
       m-2
-      text-lg
+      text-md
     "
   >
     {{ tag }}
