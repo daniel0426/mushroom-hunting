@@ -1,2 +1,2 @@
 # mushroom-hunting
-Mushroom posting blogs 
+Mushroom posting blog (fullstack application) using MEVN stack 

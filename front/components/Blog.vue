@@ -1,18 +1,14 @@
 <template>
   <div class="rounded-md ">
     <h3>{{ blog.title }}</h3>
-    <p>By {{blog.author}} on {{new Date(blog.createdAt).toLocaleString("en-NZ")}}</p>
+    <!-- <p>By {{blog.author}} on {{new Date(blog.createdAt).toLocaleString("en-NZ")}}</p> -->
     <img
-      class="object-cover w-full h-full"
+      class="object-cover w-full h-full rounded-lg"
       :src="blog.imgURL"
       alt="post image"
     />
     <div class="flex flex-row w-full justify-between z-10">
-      <ul class="mr-30">
-        <li v-for="tag in blog.tags" :key="tag.id">
-          <h3>{{ tag }}</h3>
-        </li>
-      </ul>
+        <SingleTag v-for="(tag, index) in blog.tags" :key="index" :tag="tag" />
 
       <nuxt-link
         :to="{

@@ -21,7 +21,7 @@
 
     <TagFilter :tags="tags" />
 
-    <div v-if="blogs" class="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto">
+    <div v-if="blogs" class="grid gap-2 md:gap-6 grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto">
       <Blog class="my-10"
         v-for="blog in blogs"
         :key="blog._id"
@@ -68,47 +68,7 @@ export default {
 </script>
 
 <style >
-.mushroom-list {
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.691);
 
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.action-bar {
-  margin-top: 4em;
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.8em;
-
-  color: #20431c;
-  margin-bottom: 0.5em;
-}
-
-.action-bar button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.5em;
-  width: 1.5em;
-  border-radius: 8px;
-  background-color: #add4a4;
-  color: #20431c;
-}
-
-.i_placholder {
-  height: 0.3em;
-  width: 0.3em;
-  background-color: #20431c;
-}
-
-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 </style>
 
 
