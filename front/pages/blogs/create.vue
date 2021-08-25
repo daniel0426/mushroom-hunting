@@ -23,10 +23,11 @@
 
     <select v-model="tempTag" name="tags" id="tags" @click="addTag">
       <option value="" disabled selected>Select your Tags</option>
-      <option value="Blue">Blue</option>
-      <option value="Red">Red</option>
+      <option value="native">Native</option>
+      <option value="id-req">ID?</option>
+      <option value="edible">Edible</option>
       <option value="Poisonous">Poisonous</option>
-      <option value="Fun">Fun</option>
+      <option value="rare">Rare</option>
     </select>
 
     <div  v-for="tag in tags"  :key="tag" class="pill">
