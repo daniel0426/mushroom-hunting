@@ -2,17 +2,36 @@
   <div class="flex w-full">
     <div
       class="
-        grid grid-cols-1
-        md:grid-cols-2
-        gap-4
-        md:gap-6
-        lg:gap-10
+        flex flex-grow flex-col
+        sm:flex-row
+        space-4
+        md:space-6
+        lg:space-x-10
         max-w-5xl
         mx-auto
+        justify-between
       "
     >
-      <img class="rounded-lg w-full" :src="blog.imgURL" alt="mushroom-image" />
-      <div class="space-y-4">
+      <div class="space-y-4 w-1/2">
+        <nuxt-link to="/">
+          <div class="flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 fill-current text-fungi-files-light-green"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            <h2 class=" px-2 text-fungi-files-light-green">Back to Feed</h2>
+          </div>
+        </nuxt-link>
         <h2 class="text-xl font-semibold text-fungi-files-dark-green">
           {{ blog.title }}
         </h2>
@@ -60,6 +79,12 @@
           </svg>
         </div>
       </div>
+      <img
+        class="object-cover rounded-lg w-1/2 shadow-lg hover:shadow-xl"
+        :src="blog.imgURL"
+        alt="mushroom-image"
+      />
+      <!-- </div> -->
     </div>
   </div>
 </template>

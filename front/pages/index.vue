@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col space-y-6">
+  <div class="flex flex-col space-y-6 mb-8">
     <TagFilter />
     <!-- <TagFilter @filter="filterBlogs" /> this is for when we implement the filtering functionality -->
 
@@ -34,6 +34,7 @@
         md:grid-cols-2
         max-w-4xl
         mx-auto
+        pb-10
       "
     >
       <Blog class="" v-for="blog in blogs" :key="blog._id" :blog="blog" />
