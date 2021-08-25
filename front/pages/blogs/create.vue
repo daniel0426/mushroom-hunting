@@ -1,5 +1,5 @@
 <template>
-  <div class="outer page">
+  <div class="outer page sm:w-5/6 md:4/6">
     <h1 class="text-center text-2xl uppercase ">Create Blog</h1>
 
     <form class="add-form" @submit.prevent="handleSubmit" action="">
@@ -23,10 +23,11 @@
 
     <select v-model="tempTag" name="tags" id="tags" @click="addTag">
       <option value="" disabled selected>Select your Tags</option>
-      <option value="Blue">Blue</option>
-      <option value="Red">Red</option>
+      <option value="native">Native</option>
+      <option value="id-req">ID?</option>
+      <option value="edible">Edible</option>
       <option value="Poisonous">Poisonous</option>
-      <option value="Fun">Fun</option>
+      <option value="rare">Rare</option>
     </select>
 
     <div  v-for="tag in tags"  :key="tag" class="pill">
@@ -116,7 +117,8 @@ select{
   border: 1px solid #ddd;
 }
 .outer {
-  width: 100%;
+  width: 50%;
+  
 }
 .pill{
 
