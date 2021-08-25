@@ -17,7 +17,7 @@
         <div class="flex">
           <nuxt-link
             :to="{ name: 'blogs-id-update', params: { id: blog._id } }"
-            
+
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@
             </svg>
           </nuxt-link>
           <svg
-            @click = "confirmDelete"
+            @click = "confirmDelete(blog._id)"
             xmlns="http://www.w3.org/2000/svg"
             class="h-9 w-10  text-red-600 cursor-pointer"
             fill="none"
@@ -57,14 +57,14 @@
 
 <script>
 export default {
-  
+
   data(){
     return {
     }
   },
   name: "blogs-id",
   layout: "app",
-  
+
   async asyncData({ params }) {
 
     const response = await fetch(`http://localhost:4000/blogs/${params.id}`,
@@ -72,23 +72,27 @@ export default {
     const blog = await response.json();
     return {blog};
   },
-  
+
   methods: {
     confirmDelete() {
       let answerToDelete = confirm("Are you sure you want to delete?");
       if(answerToDelete){
         this.handleDelete()
-      } 
+      }
 
     },
     async handleDelete(){
-      
-    
-      
-    }
 
-  },
-};
+      await fetch(`http://localhost:4000/blogs/${this.blog._id}`, {
+           method: 'DELETE',
+      })
+      .then(response=>{
+        if (response.status==200) this.$router.push('/')
+      })
+    }
+      /*<--use this part to add a tick or something that confirms to user that their post has been deleted successfully*/
+}
+}
 </script>
 
 <style>

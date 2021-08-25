@@ -82,18 +82,19 @@ app.post('/blogs', async (req, res, next)=> {
 //* using findByIdAndDelete method
 app.delete('/blogs/:blogId/', async (req, res, next)=> {
     try{
+        console.log('deleted')
         const deletedBlog = await Blog.findByIdAndDelete(req.params.blogId);
-        res.status(200).json(deletedBlog);     
+        res.status(200).json(deletedBlog);
     }catch(err){
         next(err)
     }
-})
+});
 
 //update - daniel
 //* using findByIdAndUpdate method
 app.patch('/blogs/:blogId/', (req, res, next)=> {
     try {
-        
+
     } catch (err) {
         next(err)
     }
