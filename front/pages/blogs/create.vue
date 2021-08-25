@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="outer page">
     <h1 class="text-center text-2xl uppercase ">Create Blog</h1>
 
     <form class="add-form" @submit.prevent="handleSubmit" action="">
@@ -15,9 +15,19 @@
       <label for="description"> Description:</label>
       <textarea name="description" reqired v-model="details" required> </textarea>
       
-      <label> Tags:</label>
+      
 
-    <input type="text" v-model="tempTag" @keyup.space="addTag"> 
+     
+
+    <label for="Tags">Tags:</label>
+
+    <select v-model="tempTag" name="tags" id="tags" @click="addTag">
+      <option value="" disabled selected>Select your Tags</option>
+      <option value="Blue">Blue</option>
+      <option value="Red">Red</option>
+      <option value="Poisonous">Poisonous</option>
+      <option value="Fun">Fun</option>
+    </select>
 
     <div  v-for="tag in tags"  :key="tag" class="pill">
         <p @click="deleteTag(tag)" >{{tag}}</p>
@@ -55,7 +65,7 @@ export default {
        if(!this.tags.includes(this.tempTag)){
          this.tags.push(this.tempTag)
        }
-        this.tempTag=""
+        
       }
      },
 
@@ -69,7 +79,10 @@ export default {
 
     
     handleSubmit() {
+
+
       let blog = {
+
         title: this.title,
         details: this.details,
         url: this.url,
@@ -77,6 +90,8 @@ export default {
         tags: this.tags
         
       };
+
+
       fetch("http://localhost:4000/blogs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -93,25 +108,38 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+
+select{
+  width: 100%;
+  height: 3em;
+  border: 1px solid #ddd;
+}
+.outer {
+  width: 100%;
+}
 .pill{
+
     display: inline-block;
     margin: 20px 10px 0 0;
     padding: 6px 12px;
     background: rgb(132, 204, 114);
     border-radius: 20px;
-    font-size: 12px;
+    
     letter-spacing: 1px;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
+    
+    color: rgb(8, 37, 13);
     cursor: pointer;
+    
 }
 .add-form {
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 2em;
+  width: 100%;
 }
+form{
+  width: 100%;
+}
+
 label {
   display: block;
   color: #bbb;
@@ -138,7 +166,7 @@ textarea {
 form button {
   display: block;
   margin: 20px auto 0;
-  background: rgb(0, 68, 255);
+  background: rgb(132, 204, 114);
   color: white;
   padding: 10px;
   border: 0;
