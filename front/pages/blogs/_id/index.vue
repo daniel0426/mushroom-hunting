@@ -17,7 +17,7 @@
         <div class="flex">
           <nuxt-link
             :to="{ name: 'blogs-id-update', params: { id: blog._id } }"
-            
+            :blogId ="blog._id"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,11 +57,7 @@
 
 <script>
 export default {
-  
-  data(){
-    return {
-    }
-  },
+
   name: "blogs-id",
   layout: "app",
   

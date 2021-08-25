@@ -60,7 +60,6 @@ app.get('/blogs/:blogId', async (req, res, next)=> {
 app.post('/blogs', async (req, res, next)=> {
     try {
     res.send('Post Recived')
-    console.log(req.body)
     const blog = new Blog({
         title: req.body.title,
         details: req.body.details,
@@ -91,9 +90,21 @@ app.delete('/blogs/:blogId/', async (req, res, next)=> {
 
 //update - daniel
 //* using findByIdAndUpdate method
-app.patch('/blogs/:blogId/', (req, res, next)=> {
+app.patch('/blogs/:blogId/', async (req, res, next)=> {
     try {
-        
+        const updateBlog = new Blog({
+            title: req.body.title,
+            details: req.body.details,
+            imgURL: req.body.url,
+            author: req.body.author,
+            tags: req.body.tags
+        })
+        const updatedBlog = await Blog.findByIdAndUpdate(
+            req.params.blogId,
+            updateBlog
+        );
+        res.status(200).json(updatedBlog);
+
     } catch (err) {
         next(err)
     }

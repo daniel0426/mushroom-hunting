@@ -18,6 +18,7 @@
             id: blog._id,
           },
         }"
+        :blog="blog"
         
       >
         <button class="px-3 py-1 bg-gray-400 text-white rounded-lg m-2 text-md cursor-pointer">

@@ -1,7 +1,6 @@
 <template class="">
   <div class="">
     <h1 class="text-center text-2xl uppercase ">Update Blog</h1>
-
      <form class="update-form sm:w-5/6" @submit.prevent="handleUpdate" action="">
       <label for="title"> Title:</label>
       <input type="text" name="title" v-model="title" required />
@@ -10,7 +9,7 @@
       <input type="text" name="author" v-model="author" required />
 
       <label for="image-url"> Image URL: </label>
-      <input type="text" name="image-url" v-model="url" required />
+      <input type="text" name="image-url" v-model="imgURL" required />
 
       <label for="description"> Description:</label>
       <textarea name="description" reqired v-model="details" required> </textarea>
@@ -28,7 +27,7 @@
       <div  v-for="tag in tags"  :key="tag" class="pill">
           <p @click="deleteTag(tag)" >{{tag}}</p>
       </div>
-      <button>Update Mushroom</button>
+      <button @click="handleUpdate">Update Mushroom</button>
     </form>
   </div>
 </template>
@@ -36,37 +35,67 @@
 <script>
 export default {
  props: {
-    blog: Object,
+    // blogId:String,
   },
   data() {
     return {
       title: "",
       author: "",
       details: "",
-      url: "",
+      imgURL: "",
       tempTag: "",
       tags:[],
     };
   },
     name : "blogs-id-update",
     layout: "app",
-  methods : {
-    addTag(){
+    methods : {
+        async asyncData({ params }) {
 
-     if( this.tempTag){
-       
-       if(!this.tags.includes(this.tempTag)){
-         this.tags.push(this.tempTag)
-       }
+        const response = await fetch(`http://localhost:4000/blogs/${params.id}/`,
+        );
+        const blog = await response.json();
         
-      }
-     },
+        return {blog}
+      },
 
-   deleteTag(tag){
-     this.tags=this.tags.filter((item) =>{
-       return tag !== item;
-     })
-   },
+        async handleUpdate(){
+        //   const updateBlog = {
+
+        //   title: this.title,
+        //   author: this.author,
+        //   details: this.details,
+        //   imgURL: this.imgURL,
+        //   tags: this.tags
+        
+        // }
+        //  await fetch(`http://localhost:4000/blogs/${params.id}`, {
+        //     method: "PATCH", 
+        //     headers : {  
+        //       'Content-Type': 'application/json'
+        //     },
+        //      body: JSON.stringify(updateBlog),
+        //   }).then(()=> {
+        //     this.$router.push('/')
+        //   })
+        },
+
+        addTag(){
+
+      if( this.tempTag){
+        
+        if(!this.tags.includes(this.tempTag)){
+          this.tags.push(this.tempTag)
+        }
+          
+        }
+      },
+
+    deleteTag(tag){
+      this.tags=this.tags.filter((item) =>{
+        return tag !== item;
+      })
+    },
   }
   
   
