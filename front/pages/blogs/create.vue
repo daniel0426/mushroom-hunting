@@ -1,6 +1,6 @@
 <template>
   <div class="outer page sm:w-5/6 md:4/6">
-    <h1 class="text-center text-2xl uppercase ">Create Blog</h1>
+    <h1 class="text-center text-2xl uppercase">Create Blog</h1>
 
     <form class="add-form" @submit.prevent="handleSubmit" action="">
       <label for="title"> Title:</label>
@@ -13,36 +13,39 @@
       <input type="text" name="image-url" v-model="url" required />
 
       <label for="description"> Description:</label>
-      <textarea name="description" reqired v-model="details" required> </textarea>
-      
-      
+      <textarea name="description" reqired v-model="details" required>
+      </textarea>
 
-     
+      <label for="Tags">Select Tags:</label>
 
-    <label for="Tags">Tags:</label>
+      <div class="flex flex-row">
+        <SingleTag
+          v-for="(tag, index) in selectableTags"
+          :key="index"
+          :tag="tag"
+          :selected="tags.includes(tag)"
+          @click="addTag(tag)"
+        />
+      </div>
 
-    <select v-model="tempTag" name="tags" id="tags" @click="addTag">
-      <option value="" disabled selected>Select your Tags</option>
-      <option value="native">Native</option>
-      <option value="id-req">ID?</option>
-      <option value="edible">Edible</option>
-      <option value="Poisonous">Poisonous</option>
-      <option value="rare">Rare</option>
-    </select>
-
-    <div  v-for="tag in tags"  :key="tag" class="pill">
-        <p @click="deleteTag(tag)" >{{tag}}</p>
-    </div>
-
-      <button>Add mushroom</button>
+      <button
+        class="mt-4 w-full bg-fungi-files-light-green p-2 text-white rounded-lg"
+      >
+        Add mushroom
+      </button>
     </form>
   </div>
 </template>
 
 <script>
 export default {
-  
   layout: "app",
+
+  computed: {
+    selectableTags() {
+      return this.$store.state.tags.selectableTags;
+    },
+  },
 
   data() {
     return {
@@ -51,94 +54,62 @@ export default {
       url: "",
       author: "",
       tempTag: "",
-      tags:[]
+      tags: [],
     };
   },
- 
- 
- methods: {
 
-
-   addTag(){
-
-     if( this.tempTag){
-       
-       if(!this.tags.includes(this.tempTag)){
-         this.tags.push(this.tempTag)
-       }
-        
+  methods: {
+    addTag(tag) {
+      if (!this.tags.includes(tag)) {
+        this.tags.push(tag);
+      } else {
+        this.deleteTag(tag)
       }
-     },
+    },
 
-   deleteTag(tag){
-     this.tags=this.tags.filter((item) =>{
-       return tag !== item;
-     })
-   },
+    deleteTag(tag) {
+      this.tags = this.tags.filter((item) => {
+        return tag !== item;
+      });
+    },
 
-
-
-    
     handleSubmit() {
-
-
       let blog = {
-
         title: this.title,
         details: this.details,
         url: this.url,
         author: this.author,
-        tags: this.tags
-        
+        tags: this.tags,
       };
-
 
       fetch("http://localhost:4000/blogs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(blog),
-      }).then(()=> {
-        this.$router.push('/')
+      }).then(() => {
+        this.$router.push("/");
       });
 
-        this.$emit('addedPost')
+      this.$emit("addedPost");
     },
-
   },
 };
-
 </script>
 
 <style scoped>
-
-select{
+select {
   width: 100%;
   height: 3em;
   border: 1px solid #ddd;
 }
 .outer {
   width: 50%;
-  
-}
-.pill{
-
-    display: inline-block;
-    margin: 20px 10px 0 0;
-    padding: 6px 12px;
-    background: rgb(132, 204, 114);
-    border-radius: 20px;
-    
-    letter-spacing: 1px;
-    
-    color: rgb(8, 37, 13);
-    cursor: pointer;
-    
 }
 .add-form {
   background: white;
   width: 100%;
 }
-form{
+form {
   width: 100%;
 }
 
@@ -163,17 +134,5 @@ textarea {
   width: 100%;
   box-sizing: border-box;
   height: 100px;
-}
-
-form button {
-  display: block;
-  margin: 20px auto 0;
-  background: rgb(132, 204, 114);
-  color: white;
-  padding: 10px;
-  border: 0;
-  border-radius: 6px;
-  font-size: 16px;
-  width: 100%;
 }
 </style>
