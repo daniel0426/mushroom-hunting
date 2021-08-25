@@ -1,6 +1,16 @@
 <template>
   <div class="flex w-full">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-10 max-w-5xl mx-auto">
+    <div
+      class="
+        grid grid-cols-1
+        md:grid-cols-2
+        gap-4
+        md:gap-6
+        lg:gap-10
+        max-w-5xl
+        mx-auto
+      "
+    >
       <img class="rounded-lg w-full" :src="blog.imgURL" alt="mushroom-image" />
       <div class="space-y-4">
         <h2 class="text-xl font-semibold text-fungi-files-dark-green">
@@ -17,7 +27,6 @@
         <div class="flex">
           <nuxt-link
             :to="{ name: 'blogs-id-update', params: { id: blog._id } }"
-
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -35,9 +44,9 @@
             </svg>
           </nuxt-link>
           <svg
-            @click = "confirmDelete(blog._id)"
+            @click="confirmDelete(blog._id)"
             xmlns="http://www.w3.org/2000/svg"
-            class="h-9 w-10  text-red-600 cursor-pointer"
+            class="h-9 w-10 text-red-600 cursor-pointer"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -57,42 +66,35 @@
 
 <script>
 export default {
-
-  data(){
-    return {
-    }
+  data() {
+    return {};
   },
   name: "blogs-id",
   layout: "app",
 
   async asyncData({ params }) {
-
-    const response = await fetch(`http://localhost:4000/blogs/${params.id}`,
-    );
+    const response = await fetch(`http://localhost:4000/blogs/${params.id}`);
     const blog = await response.json();
-    return {blog};
+    return { blog };
   },
 
   methods: {
     confirmDelete() {
       let answerToDelete = confirm("Are you sure you want to delete?");
-      if(answerToDelete){
-        this.handleDelete()
+      if (answerToDelete) {
+        this.handleDelete();
       }
-
     },
-    async handleDelete(){
-
+    async handleDelete() {
       await fetch(`http://localhost:4000/blogs/${this.blog._id}`, {
-           method: 'DELETE',
-      })
-      .then(response=>{
-        if (response.status==200) this.$router.push('/')
-      })
-    }
-      /*<--use this part to add a tick or something that confirms to user that their post has been deleted successfully*/
-}
-}
+        method: "DELETE",
+      }).then((response) => {
+        if (response.status == 200) this.$router.push("/");
+      });
+    },
+    /*<--use this part to add a tick or something that confirms to user that their post has been deleted successfully*/
+  },
+};
 </script>
 
 <style>
