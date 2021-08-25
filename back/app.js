@@ -66,7 +66,7 @@ app.post('/blogs', async (req, res, next)=> {
         details: req.body.details,
         imgURL: req.body.url,
         author: req.body.author,
-        tags: req.body.title
+        tags: req.body.tags
     })
 
     const savedBlog = await blog.save()
