@@ -34,10 +34,6 @@ export default {
   name: "Contact",
   layout: "app",
 
-
-
-
-  el:'#app',
   data (){
     return {
       errors:[],
@@ -48,6 +44,11 @@ export default {
 
   },
   methods:{
+
+      contactSubmit(){
+     this.$router.push('/');
+      },
+
     checkForm: function(e){
       this.errors = [];
       if (!this.firstName(this.firstname))
