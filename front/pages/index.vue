@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col space-y-6">
-    <TagFilter :tags="tags" />
+    <TagFilter />
+    <!-- <TagFilter @filter="filterBlogs" /> this is for when we implement the filtering functionality -->
 
     <div class="flex justify-between">
       <h1 class="text-2xl text-fungi-files-dark-green font-semibold">
@@ -59,20 +60,15 @@ export default {
     await this.getBlogs();
   },
 
-  computed: {
-    tags() {
-      return this.blogs
-        .map((blog) => blog.tags)
-        .reduce((a, b) => a.concat(b), []);
-    },
-  },
-
   methods: {
     async getBlogs() {
       const response = await fetch("http://localhost:4000/blogs");
       const data = await response.json();
       this.blogs = data;
     },
+    // async filterBlogs(tag) {
+    //   // filter the blogs
+    // }
   },
 };
 </script>
