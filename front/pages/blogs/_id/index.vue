@@ -43,7 +43,7 @@
 
         <h3 class="text-lg font-semibold text-fungi-files-dark-green">Tags:</h3>
         <SingleTag v-for="(tag, index) in blog.tags" :key="index" :tag="tag" />
-        <div class="flex">
+        <div class="flex py-4">
           <nuxt-link
             :to="{ name: 'blogs-id-update', params: { id: blog._id } }"
             
