@@ -27,9 +27,9 @@
         class="
           px-3
           py-1
-          bg-gray-400
+          bg-fungi-files-light-green
           hover
-          text-white
+          text-fungi-files-dark-green
           rounded-lg
           m-2
           text-md

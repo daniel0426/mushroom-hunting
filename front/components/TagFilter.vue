@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <h2 class="">Filter by:</h2>
+    <h2 class="text-lg text-fungi-files-dark-green">Filter by:</h2>
     <div class="flex flex-wrap">
       <SingleTag
         v-for="(tag, index) in tags"
