@@ -1,2 +1,2 @@
 # mushroom-hunting
-Mushroom posting blog (fullstack application) using MEVN stack 
+Mushroom posting blog (crud application) using MEVN stack - MongoDB, Express, Vue(nuxt.js), Node.js 
