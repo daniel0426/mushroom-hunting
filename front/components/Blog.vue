@@ -1,7 +1,6 @@
 <template>
   <div class="rounded-md m-12">
     <h3>{{ blog.title }}</h3>
-    <!-- <p>By {{blog.author}} on {{new Date(blog.createdAt).toLocaleString("en-NZ")}}</p> -->
     <img
       class="object-cover w-full h-full rounded-lg"
       :src="blog.imgURL"
