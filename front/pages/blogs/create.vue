@@ -28,11 +28,13 @@
         />
       </div>
 
-      <button
-        class="mt-4 w-full bg-fungi-files-light-green p-2 text-white rounded-lg"
-      >
-        Add mushroom
-      </button>
+      <div class="w-full flex">
+        <button
+          class="my-4 mx-auto bg-fungi-files-light-green px-10 py-2 text-white rounded-lg"
+        >
+          Add mushroom
+        </button>
+      </div>
     </form>
   </div>
 </template>
