@@ -1,11 +1,13 @@
 <template>
-  <div class="rounded-md m-12">
+  <div class="rounded-md">
     <h3>{{ blog.title }}</h3>
-    <img
-      class="object-cover w-full h-full rounded-lg"
-      :src="blog.imgURL"
-      alt="post image"
-    />
+    <div class="flex items-center">
+      <img
+        class="h-96 w-full mx-auto rounded-lg object-cover"
+        :src="blog.imgURL"
+        alt="post image"
+      />
+    </div>
     <div class="flex flex-row w-full justify-between z-10">
       <SingleTag v-for="(tag, index) in blog.tags" :key="index" :tag="tag" />
 

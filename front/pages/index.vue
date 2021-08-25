@@ -28,16 +28,15 @@
       v-if="blogs"
       class="
         grid
-        gap-2
-        m-12
-        md:gap-6
+        gap-6
+        md:gap-12
         grid-cols-1
         md:grid-cols-2
-        max-w-3xl
+        max-w-4xl
         mx-auto
       "
     >
-      <Blog class="my-10" v-for="blog in blogs" :key="blog._id" :blog="blog" />
+      <Blog class="" v-for="blog in blogs" :key="blog._id" :blog="blog" />
     </div>
     <div v-else>
       <h2>Loading mushrooms...</h2>
