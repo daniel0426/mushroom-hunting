@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col space-y-6 mb-8">
-    <TagFilter />
     <!-- <TagFilter @filter="filterBlogs" /> this is for when we implement the filtering functionality -->
 
     <div class="flex justify-between">
@@ -8,7 +7,7 @@
         Recent Posts:
       </h1>
 
-      <nuxt-link to="/blogs/create">
+      <nuxt-link to="/blogs/create" class="flex flex-row">
         <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -23,8 +22,11 @@
             />
           </svg>
         </button>
+        <h2 class="text-fungi-files-dark-green font-semibold self-center pl-2 text-2xl"> New Post </h2>
       </nuxt-link>
     </div>
+
+    <TagFilter />
 
     <div
       v-if="blogs"

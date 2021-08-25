@@ -29,9 +29,9 @@
 
       <div class="menu-list font-semibold text-fungi-files-dark-green" v-if="menu">
         <nuxt-link @click.native="openMenu()" to="/">Home</nuxt-link>
+        <nuxt-link @click.native="openMenu()" to="/blogs/create">Create New Post</nuxt-link>
         <nuxt-link @click.native="openMenu()" to="/about">About</nuxt-link>
         <nuxt-link @click.native="openMenu()" to="/contact">Contact</nuxt-link>
-        <nuxt-link @click.native="openMenu()" to="/blogs/create">Add</nuxt-link>
       </div>
     </div>
   </div>
