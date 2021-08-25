@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col space-y-6">
-    <TagFilter :tags="tags" />
+    <TagFilter />
+    <!-- <TagFilter @filter="filterBlogs" /> this is for when we implement the filtering functionality -->
 
     <div class="flex justify-between">
       <h1 class="text-2xl text-fungi-files-dark-green font-semibold">
@@ -27,16 +28,15 @@
       v-if="blogs"
       class="
         grid
-        gap-2
-        m-12
-        md:gap-6
+        gap-6
+        md:gap-12
         grid-cols-1
         md:grid-cols-2
-        max-w-3xl
+        max-w-4xl
         mx-auto
       "
     >
-      <Blog class="my-10" v-for="blog in blogs" :key="blog._id" :blog="blog" />
+      <Blog class="" v-for="blog in blogs" :key="blog._id" :blog="blog" />
     </div>
     <div v-else>
       <h2>Loading mushrooms...</h2>
@@ -59,20 +59,15 @@ export default {
     await this.getBlogs();
   },
 
-  computed: {
-    tags() {
-      return this.blogs
-        .map((blog) => blog.tags)
-        .reduce((a, b) => a.concat(b), []);
-    },
-  },
-
   methods: {
     async getBlogs() {
       const response = await fetch("http://localhost:4000/blogs");
       const data = await response.json();
       this.blogs = data;
     },
+    // async filterBlogs(tag) {
+    //   // filter the blogs
+    // }
   },
 };
 </script>
