@@ -1,5 +1,5 @@
 <template>
-  <div class="outer page">
+  <div class="outer page sm:w-5/6 md:4/6">
     <h1 class="text-center text-2xl uppercase ">Create Blog</h1>
 
     <form class="add-form" @submit.prevent="handleSubmit" action="">
@@ -116,7 +116,8 @@ select{
   border: 1px solid #ddd;
 }
 .outer {
-  width: 100%;
+  width: 50%;
+  
 }
 .pill{
 
