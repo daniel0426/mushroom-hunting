@@ -6,6 +6,7 @@
         v-for="(tag, index) in tags"
         :key="index"
         :tag="tag"
+        @click="$emit('filter', tag)"
       />
     </div>
   </div>
@@ -15,8 +16,10 @@
 export default {
   name: "TagFilter",
 
-  props: {
-    tags: Array,
+  computed: {
+    tags() {
+      return this.$store.state.tags.selectableTags;
+    },
   },
 };
 </script>

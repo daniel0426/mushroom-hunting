@@ -1,8 +1,37 @@
 <template>
   <div class="flex w-full">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-10 max-w-5xl mx-auto">
-      <img class="rounded-lg w-full" :src="blog.imgURL" alt="mushroom-image" />
-      <div class="space-y-4">
+    <div
+      class="
+        flex flex-grow flex-col
+        sm:flex-row
+        space-4
+        md:space-6
+        lg:space-x-10
+        max-w-5xl
+        mx-auto
+        justify-between
+      "
+    >
+      <div class="space-y-4 w-1/2">
+        <nuxt-link to="/">
+          <div class="flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 fill-current text-fungi-files-light-green"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            <h2 class=" px-2 text-fungi-files-light-green">Back to Feed</h2>
+          </div>
+        </nuxt-link>
         <h2 class="text-xl font-semibold text-fungi-files-dark-green">
           {{ blog.title }}
         </h2>
@@ -34,9 +63,9 @@
             </svg>
           </nuxt-link>
           <svg
-            @click = "confirmDelete(blog._id)"
+            @click="confirmDelete(blog._id)"
             xmlns="http://www.w3.org/2000/svg"
-            class="h-9 w-10  text-red-600 cursor-pointer"
+            class="h-9 w-10 text-red-600 cursor-pointer"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -50,48 +79,47 @@
           </svg>
         </div>
       </div>
+      <img
+        class="object-cover rounded-lg w-1/2 shadow-lg hover:shadow-xl"
+        :src="blog.imgURL"
+        alt="mushroom-image"
+      />
+      <!-- </div> -->
     </div>
   </div>
 </template>
 
 <script>
 export default {
-
-  data(){
-    return {
-    }
+  data() {
+    return {};
   },
   name: "blogs-id",
   layout: "app",
 
   async asyncData({ params }) {
-
-    const response = await fetch(`http://localhost:4000/blogs/${params.id}`,
-    );
+    const response = await fetch(`http://localhost:4000/blogs/${params.id}`);
     const blog = await response.json();
-    return {blog};
+    return { blog };
   },
 
   methods: {
     confirmDelete() {
       let answerToDelete = confirm("Are you sure you want to delete?");
-      if(answerToDelete){
-        this.handleDelete()
+      if (answerToDelete) {
+        this.handleDelete();
       }
-
     },
-    async handleDelete(){
-
+    async handleDelete() {
       await fetch(`http://localhost:4000/blogs/${this.blog._id}`, {
-           method: 'DELETE',
-      })
-      .then(response=>{
-        if (response.status==200) this.$router.push('/')
-      })
-    }
-      /*<--use this part to add a tick or something that confirms to user that their post has been deleted successfully*/
-}
-}
+        method: "DELETE",
+      }).then((response) => {
+        if (response.status == 200) this.$router.push("/");
+      });
+    },
+    /*<--use this part to add a tick or something that confirms to user that their post has been deleted successfully*/
+  },
+};
 </script>
 
 <style>
