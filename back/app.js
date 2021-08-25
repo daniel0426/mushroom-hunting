@@ -91,15 +91,15 @@ app.delete('/blogs/:blogId/', async (req, res, next)=> {
 
 //update - daniel
 //* using findByIdAndUpdate method
-app.patch('/blogs/:blogId/', async (req, res, next)=> {
+app.patch('/blogs/:blogId', async (req, res, next)=> {
     try {
-        const updateBlog = new Blog({
+        const updateBlog ={
             title: req.body.title,
             details: req.body.details,
-            imgURL: req.body.url,
+            imgURL: req.body.imgURL,
             author: req.body.author,
             tags: req.body.tags
-        })
+        }
         const updatedBlog = await Blog.findByIdAndUpdate(
             req.params.blogId,
             updateBlog

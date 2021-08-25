@@ -1,9 +1,9 @@
 <template>
   <div
-    class="flex w-full h-20 justify-between items-center px-6 shadow-b shadow-md"
+    class="flex w-full h-20 justify-between items-center px-6 shadow-b shadow-md p-4"
   >
    <nuxt-link to="/">
-      <div class="flex justify-center items-center space-x-4">     
+      <div class="flex justify-center items-center space-x-4 ">     
           <img class="h-16" src="@/static/images/mushroom_logo.png" alt="page logo" />
           <h1 class="text-xl font-semibold text-fungi-files-dark-green">Fungi Files</h1>
       </div>
@@ -67,6 +67,7 @@ export default {
 
 <style>
 .menu-list {
+  z-index: 100;
   height: 100vh;
   display: flex;
   flex-direction: column;

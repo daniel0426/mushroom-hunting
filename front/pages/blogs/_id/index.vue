@@ -46,6 +46,7 @@
         <div class="flex">
           <nuxt-link
             :to="{ name: 'blogs-id-update', params: { id: blog._id } }"
+            
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -91,12 +92,12 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  },
+  
   name: "blogs-id",
   layout: "app",
-
+  data(){
+    
+  },
   async asyncData({ params }) {
     const response = await fetch(`http://localhost:4000/blogs/${params.id}`);
     const blog = await response.json();

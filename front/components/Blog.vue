@@ -22,18 +22,6 @@
     <div class="flex flex-row w-full justify-between items-center z-10 p-2">
       <h3 class="ml-2 text-fungi-files-dark-green font-semibold">{{ blog.title }}</h3>
 
-<<<<<<< HEAD
-      <nuxt-link
-      
-        :to="{
-          name: 'blogs-id',
-          params: {
-            id: blog._id,
-          },
-        }"
-        :blog="blog"
-        
-=======
       <button
         type="button"
         class="
@@ -55,7 +43,6 @@
             },
           })
         "
->>>>>>> 19bf60fcd36553f8cf5ccc95ab35dadeabc09a84
       >
         Detail View
       </button>

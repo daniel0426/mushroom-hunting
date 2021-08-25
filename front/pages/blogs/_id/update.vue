@@ -8,8 +8,8 @@
       <label for="author"> Author:</label>
       <input type="text" name="author" v-model="author" required />
 
-      <label for="image-url"> Image URL: </label>
-      <input type="text" name="image-url" v-model="imgURL" required />
+      <label for="imgURL"> Image URL: </label>
+      <input type="text" name="imgURL" v-model="imgURL" required />
 
       <label for="description"> Description:</label>
       <textarea name="description" reqired v-model="details" required> </textarea>
@@ -23,7 +23,6 @@
         <option value="Poisonous">Poisonous</option>
         <option value="Fun">Fun</option>
       </select>
-
       <div  v-for="tag in tags"  :key="tag" class="pill">
           <p @click="deleteTag(tag)" >{{tag}}</p>
       </div>
@@ -34,9 +33,10 @@
 
 <script>
 export default {
- props: {
-    // blogId:String,
-  },
+
+   name : "blogs-id-update",
+  layout: "app",
+  
   data() {
     return {
       title: "",
@@ -45,57 +45,67 @@ export default {
       imgURL: "",
       tempTag: "",
       tags:[],
+      
     };
   },
-    name : "blogs-id-update",
-    layout: "app",
+   mounted(){
+     console.log
+    this.title = this.blog.title;
+    this.author = this.blog.author;
+    this.details= this.blog.details;
+    this.tags = this.blog.tags;
+    this.imgURL = this.blog.imgURL;
+   },
+    async asyncData({ params }) {
+
+          const response = await fetch(`http://localhost:4000/blogs/${params.id}/`,
+          );
+          const blog = await response.json();
+          
+          return {blog}
+        },
+   
     methods : {
-        async asyncData({ params }) {
-
-        const response = await fetch(`http://localhost:4000/blogs/${params.id}/`,
-        );
-        const blog = await response.json();
-        
-        return {blog}
-      },
-
         async handleUpdate(){
-        //   const updateBlog = {
+          const updateBlog = {
+            title: this.title,
+            author: this.author,
+            details: this.details,
+            imgURL: this.imgURL,
+            tags: this.tags
+             
+        }
+        console.log(updateBlog);
+         await fetch(`http://localhost:4000/blogs/${this.blog._id}`, {
+            method: "PATCH", 
+            headers : {  
+              "Content-Type": "application/json"
+            },
+             body: JSON.stringify(updateBlog),
+          }).then((res)=> {
+             if(res.status===200){
 
-        //   title: this.title,
-        //   author: this.author,
-        //   details: this.details,
-        //   imgURL: this.imgURL,
-        //   tags: this.tags
-        
-        // }
-        //  await fetch(`http://localhost:4000/blogs/${params.id}`, {
-        //     method: "PATCH", 
-        //     headers : {  
-        //       'Content-Type': 'application/json'
-        //     },
-        //      body: JSON.stringify(updateBlog),
-        //   }).then(()=> {
-        //     this.$router.push('/')
-        //   })
+               this.$router.push('/')
+             }  
+          })
         },
 
-        addTag(){
+      addTag(){
 
-      if( this.tempTag){
-        
-        if(!this.tags.includes(this.tempTag)){
-          this.tags.push(this.tempTag)
-        }
+        if( this.tempTag){
           
-        }
+          if(!this.tags.includes(this.tempTag)){
+            this.tags.push(this.tempTag)
+          }
+            
+          }
       },
 
-    deleteTag(tag){
-      this.tags=this.tags.filter((item) =>{
-        return tag !== item;
-      })
-    },
+      deleteTag(tag){
+        this.tags=this.tags.filter((item) =>{
+          return tag !== item;
+        })
+      },
   }
   
   
