@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full">
+  <div class="flex w-full flex-col">
     <div
       class="
         flex flex-grow flex-col
@@ -10,9 +10,10 @@
         max-w-5xl
         mx-auto
         justify-between
+        pb-10 sm:p-0
       "
     >
-      <div class="space-y-4 w-1/2">
+      <div class="space-y-4 sm:w-1/2">
         <nuxt-link to="/">
           <div class="flex">
             <svg
@@ -81,11 +82,10 @@
         </div>
       </div>
       <img
-        class="object-cover rounded-lg w-1/2 shadow-lg hover:shadow-xl"
+        class="object-cover rounded-lg sm:w-1/2 shadow-lg hover:shadow-xl"
         :src="blog.imgURL"
         alt="mushroom-image"
       />
-      <!-- </div> -->
     </div>
   </div>
 </template>

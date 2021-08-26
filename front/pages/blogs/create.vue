@@ -1,8 +1,8 @@
 <template>
-  <div class="outer page sm:w-5/6 md:4/6">
+  <div class="sm:w-5/6 md:4/6 lg:w-5/12">
     <h1 class="text-center text-2xl uppercase">Create Blog</h1>
 
-    <form class="add-form" @submit.prevent="handleSubmit" action="">
+    <form class="" @submit.prevent="handleSubmit" action="">
       <label for="title"> Title:</label>
       <input type="text" name="title" v-model="title" required />
 
@@ -30,9 +30,17 @@
 
       <div class="w-full flex">
         <button
-          class="my-4 mx-auto bg-fungi-files-light-green px-10 py-2 text-white rounded-lg"
+          class="
+            my-4
+            mx-auto
+            bg-fungi-files-light-green
+            px-16
+            py-2
+            text-white
+            rounded-lg
+          "
         >
-          Add mushroom
+          Add Post
         </button>
       </div>
     </form>
@@ -65,7 +73,7 @@ export default {
       if (!this.tags.includes(tag)) {
         this.tags.push(tag);
       } else {
-        this.deleteTag(tag)
+        this.deleteTag(tag);
       }
     },
 
@@ -99,21 +107,6 @@ export default {
 </script>
 
 <style scoped>
-select {
-  width: 100%;
-  height: 3em;
-  border: 1px solid #ddd;
-}
-.outer {
-  width: 50%;
-}
-.add-form {
-  background: white;
-  width: 100%;
-}
-form {
-  width: 100%;
-}
 
 label {
   display: block;

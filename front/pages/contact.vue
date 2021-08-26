@@ -1,30 +1,42 @@
 <template>
-  <div class="">
+  <div class="sm:w-5/6 md:4/6 lg:w-5/12">
     <h1 class="text-center text-2xl uppercase mb-2">Contact</h1>
-     <form action="" @submit.prevent="contactSubmit" id="app" @submit="checkForm" method="post" novalidate="true">
-       <div class="name-inputs">
-          <label for="firstname">First Name</label>
-          <input type="text" id="first-name" name="firstname" placeholder="Jane" v-model="firstname" >
+    <form @submit.prevent="contactSubmit" id="app">
+      <div class="name-inputs">
+        <label for="firstname">First Name</label>
+        <input type="text" id="first-name" name="firstname" placeholder="Jane" v-model="firstname" required />
 
+        <label for="surname">Last Name</label>
+        <input type="text" id="surname" name="surname" placeholder="Doe" v-model="surname" required />
+      </div>
 
-          <label for="surname">Last Name</label>
-          <input type="text" id="surname" name="surname" placeholder="Doe" v-model="surname" >
-    </div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="example@eg.com" v-model="email" required />
 
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email" placeholder="example@eg.com" required v-model="email">
+      <label for="subject">How can we help you?</label>
+      <textarea id="subject" name="subject" placeholder="Type your message here..." style="height:200px" required />
 
-    <label for="subject">How can we help you?</label>
-    <textarea id="subject" name="subject" placeholder="Type your message here..." style="height:200px" required></textarea>
+      <p v-if="errors.length">
+        <ul>
+          <li v-for="error in errors" :key="error.message" >{{error.message}}</li>
+        </ul>
+      </p>
 
-     <p v-if="errors.length">
-      <ul>
-        <li v-for="error in errors" :key="error.message" >{{error.message}}</li>
-      </ul>
-    </p>
-
-    <input type="submit" value="Submit" class=" bg-green-600 cursor-pointer rounded hover:bg-green-500 transition  duration-500 ease-in-out ">
-
+      <div class="w-full flex">
+        <button
+          class="
+            my-4
+            mx-auto
+            bg-fungi-files-light-green
+            px-16
+            py-2
+            text-white
+            rounded-lg
+          "
+        >
+          Submit
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -34,58 +46,50 @@ export default {
   name: "Contact",
   layout: "app",
 
-  data (){
+  data() {
     return {
-      errors:[],
+      errors: [],
       firstname: null,
       surname: null,
-      email: null
-    }
-
+      email: null,
+    };
   },
-  methods:{
+  methods: {
+    contactSubmit() {
+      this.$router.push("/");
+    },
 
-    contactSubmit(){
-     this.$router.push('/');
-      },
-
-    checkForm: function(e){
+    checkForm: function (e) {
       this.errors = [];
-      if (!this.firstName(this.firstname))
-      {
-        this.errors.push({message:'Please provide your first name'});
-      } else
-      if (this.errors.length>0)return true;
+      if (!this.firstName(this.firstname)) {
+        this.errors.push({ message: "Please provide your first name" });
+      } else if (this.errors.length > 0) return true;
       e.preventDefault();
 
-      if (!this.surName(this.surname))
-      {
-        this.errors.push({message:'Please provide your last name'});
-      } else
-      if (this.errors.length>0)return true;
+      if (!this.surName(this.surname)) {
+        this.errors.push({ message: "Please provide your last name" });
+      } else if (this.errors.length > 0) return true;
       e.preventDefault();
 
-      if (!this.validEmail(this.email))
-       {
-        this.errors.push({message:'Please provide a valid email address'});
-      } else
-      if (this.errors.length>0)return true;
+      if (!this.validEmail(this.email)) {
+        this.errors.push({ message: "Please provide a valid email address" });
+      } else if (this.errors.length > 0) return true;
       e.preventDefault();
     },
     validEmail: function (email) {
-      var re = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/
+      var re = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
       return re.test(email);
     },
-    firstName: function (firstname){
-      var re = /^[A-Za-z]+$/
+    firstName: function (firstname) {
+      var re = /^[A-Za-z]+$/;
       return re.test(firstname);
     },
-    surName: function (surname){
-      var re = /^[A-Za-z]+$/
+    surName: function (surname) {
+      var re = /^[A-Za-z]+$/;
       return re.test(surname);
-    }
-  }
-  };
+    },
+  },
+};
 </script>
 
 <style>
@@ -103,7 +107,6 @@ input {
   border: 0;
   border-bottom: 1px solid #ddd;
   width: 100%;
-  color: white;
 }
 textarea {
   border: 1px solid #ddd;
@@ -112,5 +115,4 @@ textarea {
   box-sizing: border-box;
   height: 100px;
 }
-
 </style>
