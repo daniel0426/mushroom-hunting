@@ -45,7 +45,7 @@ export default {
   },
   methods:{
 
-      contactSubmit(){
+    contactSubmit(){
      this.$router.push('/');
       },
 
@@ -89,6 +89,28 @@ export default {
 </script>
 
 <style>
-
+label {
+  display: block;
+  color: #bbb;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 20px 0 10px 0;
+}
+input {
+  padding: 10px;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  color: white;
+}
+textarea {
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100px;
+}
 
 </style>
