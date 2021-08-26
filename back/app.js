@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 
-
 //created a server (express app)
 const app = express();
 
@@ -33,80 +32,16 @@ app.use(express.json());
 const Blog = require("./models/blog");
 const { response } = require('express');
 
-//get all blogs - Alexis
-// * using "find method"
-app.get('/blogs', async (req, res, next)=> {
-    try{
-        const blogs = await Blog.find().sort({createdAt : -1})
-        res.status(200).json(blogs)
-    }catch(err){
-        next(err)
 
-    }
-});
+//blogcontroller
+const blogController = require('./controllers/blogController');
 
-//get specific blog
-app.get('/blogs/:blogId', async (req, res, next)=> {
-    try{
-        const blog = await Blog.findById(req.params.blogId)
-        res.status(200).json(blog)
-    }catch(err){
-        next(err);
-    }
-});
+app.get('/blogs', blogController.getAllBlog);
 
-//post new blog - Riley
-// * make a new instance of Blog and using save()
-app.post('/blogs', async (req, res, next)=> {
-    try {
-    res.send('Post Recived')
-    const blog = new Blog({
-        title: req.body.title,
-        details: req.body.details,
-        imgURL: req.body.url,
-        author: req.body.author,
-        tags: req.body.tags
-    })
+app.get('/blogs/:blogId', blogController.getSpecificBlog);
 
-    const savedBlog = await blog.save()
-    res.status(200).send(savedBlog)
+app.post('/blogs', blogController.createBlog);
 
-    }catch(err){
-        next(err);
-    }
-});
+app.delete('/blogs/:blogId/', blogController.deleteBlog);
 
-
-//delete the blog - Annabel
-//* using findByIdAndDelete method
-app.delete('/blogs/:blogId/', async (req, res, next)=> {
-    try{
-        console.log('deleted')
-        const deletedBlog = await Blog.findByIdAndDelete(req.params.blogId);
-        res.status(200).json(deletedBlog);
-    }catch(err){
-        next(err)
-    }
-});
-
-//update - daniel
-//* using findByIdAndUpdate method
-app.patch('/blogs/:blogId', async (req, res, next)=> {
-    try {
-        const updateBlog ={
-            title: req.body.title,
-            details: req.body.details,
-            imgURL: req.body.imgURL,
-            author: req.body.author,
-            tags: req.body.tags
-        }
-        const updatedBlog = await Blog.findByIdAndUpdate(
-            req.params.blogId,
-            updateBlog
-        );
-        res.status(200).json(updatedBlog);
-
-    } catch (err) {
-        next(err)
-    }
-});
+app.patch('/blogs/:blogId', blogController.updateBlog);
