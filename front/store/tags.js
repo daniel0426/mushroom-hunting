@@ -1,7 +1,7 @@
 export const state = () => ({
     selectableTags: [
         'Native',
-        'ID?',
+        'Ornamental',
         'Edible',
         'Poisonous',
         'Rare'

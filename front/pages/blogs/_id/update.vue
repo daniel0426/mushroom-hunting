@@ -1,5 +1,5 @@
 <template class="">
-  <div class="">
+  <div class="block sm:w-5/6 md:w-4/6 lg:w-5/12 update">
     <h1 class="text-center text-2xl uppercase ">Update Blog</h1>
      <form class="update-form sm:w-5/6" @submit.prevent="handleUpdate" action="">
       <label for="title"> Title:</label>
@@ -16,7 +16,7 @@
 
       <label for="Tags">Tags:</label>
 
-      <select v-model="tempTag" name="tags" id="tags" @click="addTag">
+      <!-- <select v-model="tempTag" name="tags" id="tags" @click="addTag">
         <option value="" disabled selected>Select your Tags</option>
         <option value="Native">Native</option>
         <option value="Ornamental">Ornamental</option>
@@ -24,11 +24,21 @@
         <option value="Rare">Rare</option>
         <option value="Poisonous">Poisonous</option>
 
-      </select>
-      <div  v-for="tag in tags"  :key="tag" class="pill">
+      </select> -->
+      <div class="flex flex-row flex-wrap md:flex-nowrap  gap-2 tagsContainer ">
+       <SingleTag
+          v-for="(tag, index) in selectableTags"
+          :key="index"
+          :tag="tag"
+          
+          :selected="tags.includes(tag)"
+          @click="addTag(tag)"
+        />
+        </div>
+      <!-- <div  v-for="tag in tags"  :key="tag" class="pill">
           <p @click="deleteTag(tag)" >{{tag}}</p>
-      </div>
-      <button class="bg-fungi-files-light-green hover:bg-green-600" @click="handleUpdate">Update Mushroom</button>
+      </div> -->
+      <button class="bg-green-600 hover:bg-green-700 m-4" @click="handleUpdate">Update Mushroom</button>
     </form>
   </div>
 </template>
@@ -78,6 +88,7 @@ export default {
             author: this.author,
             details: this.details,
             imgURL: this.imgURL,
+            tempTag: "",
             tags: this.tags
              
         }
@@ -96,22 +107,19 @@ export default {
           })
         },
 
-      addTag(){
+       addTag(tag) {
+      if (!this.tags.includes(tag)) {
+        this.tags.push(tag);
+      } else {
+        this.deleteTag(tag)
+      }
+    },
 
-        if( this.tempTag){
-          
-          if(!this.tags.includes(this.tempTag)){
-            this.tags.push(this.tempTag)
-          }
-            
-          }
-      },
-
-      deleteTag(tag){
-        this.tags=this.tags.filter((item) =>{
-          return tag !== item;
-        })
-      },
+    deleteTag(tag) {
+      this.tags = this.tags.filter((item) => {
+        return tag !== item;
+      });
+    },
   }
   
   
@@ -139,6 +147,12 @@ select{
     color: rgb(8, 37, 13);
     cursor: pointer;
     
+}
+.update {
+  min-width: 300px;
+}
+.tagsContainer {
+  width: 80%;
 }
 .update-form{
   background: white;
