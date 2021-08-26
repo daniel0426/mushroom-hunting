@@ -18,10 +18,12 @@
 
       <select v-model="tempTag" name="tags" id="tags" @click="addTag">
         <option value="" disabled selected>Select your Tags</option>
-        <option value="Blue">Blue</option>
-        <option value="Red">Red</option>
+        <option value="Native">Native</option>
+        <option value="Ornamental">Ornamental</option>
+        <option value="Edible">Edible</option>
+        <option value="Rare">Rare</option>
         <option value="Poisonous">Poisonous</option>
-        <option value="Fun">Fun</option>
+
       </select>
       <div  v-for="tag in tags"  :key="tag" class="pill">
           <p @click="deleteTag(tag)" >{{tag}}</p>
@@ -36,7 +38,11 @@ export default {
 
    name : "blogs-id-update",
   layout: "app",
-  
+   computed: {
+    selectableTags() {
+      return this.$store.state.tags.selectableTags;
+    },
+  },
   data() {
     return {
       title: "",
