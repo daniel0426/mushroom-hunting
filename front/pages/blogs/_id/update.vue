@@ -26,7 +26,7 @@
       <div  v-for="tag in tags"  :key="tag" class="pill">
           <p @click="deleteTag(tag)" >{{tag}}</p>
       </div>
-      <button @click="handleUpdate">Update Mushroom</button>
+      <button class="bg-fungi-files-light-green hover:bg-green-600" @click="handleUpdate">Update Mushroom</button>
     </form>
   </div>
 </template>
@@ -140,7 +140,7 @@ select{
   border-radius: 10px;
   margin-top: 2em;
  width: 100%;
-  min-width: 250px;
+  min-width: 300px;
 }
 label {
   display: block;
@@ -168,7 +168,7 @@ textarea {
 form button {
   display: block;
   margin: 20px auto 0;
-  background: rgb(0, 68, 255);
+  
   color: white;
   padding: 10px;
   border: 0;
