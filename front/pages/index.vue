@@ -8,21 +8,33 @@
       </h1>
 
       <nuxt-link to="/blogs/create" class="flex flex-row">
+        <h2
+          class="
+            text-fungi-files-dark-green
+            font-semibold
+            self-center
+            pr-2
+            text-2xl
+          "
+        >
+          New Post
+        </h2>
         <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-8 w-8 fill-current text-fungi-files-dark-green"
-            viewBox="0 0 20 20"
-            fill="currentColor"
+            class="h-8 w-8 text-fungi-files-dark-green"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
             <path
-              fill-rule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-              clip-rule="evenodd"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
         </button>
-        <h2 class="text-fungi-files-dark-green font-semibold self-center pl-2 text-2xl"> New Post </h2>
       </nuxt-link>
     </div>
 
