@@ -66,22 +66,15 @@ export default {
   name: "Home",
   layout: "app",
 
-  data() {
-    return {
-      blogs: [],
-    };
-  },
-
-  async fetch() {
-    await this.getBlogs();
+  async asyncData() {
+    // do the fetch and response handling here
+    const response = await fetch("http://localhost:4000/blogs");
+    const blogs = await response.json();
+    // remove the async fetch, data, and getBlog stuff
+    return { blogs };
   },
 
   methods: {
-    async getBlogs() {
-      const response = await fetch("http://localhost:4000/blogs");
-      const data = await response.json();
-      this.blogs = data;
-    },
     // async filterBlogs(tag) {
     //   // filter the blogs
     // }
